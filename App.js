@@ -6,6 +6,8 @@ import AppLoading from 'expo-app-loading';
 import LandingScreen from './screens/LandingScreen';
 import Colors from './constants/colors';
 import ImageRPS from './components/ImageRPS';
+import HomeScreen from "./screens/HomeScreen";
+import MakeMoveScreen from "./screens/MakeMoveScreen";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -30,6 +32,10 @@ export default function App() {
 
   let content = <LandingScreen onStartGame={startGameHandler} />;
 
+  if(startGameHandler) {
+    //content = <HomeScreen></HomeScreen>
+    content = <MakeMoveScreen></MakeMoveScreen>
+  }
   return <SafeAreaView style={styles.screen}>{content}</SafeAreaView>;
 }
 
