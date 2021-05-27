@@ -5,7 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 const Rock = props => {
   return (
-    <View style={styles.iconContainer}>
+    <View style={styles.iconContainer} onPress={() => {}}>
       <FontAwesome
         name="hand-rock-o"
         size={50}

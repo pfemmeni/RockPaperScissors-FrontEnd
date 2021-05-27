@@ -28,7 +28,11 @@ const MakeMoveScreen = props => {
       </View>
       <View style={styles.iconContainer}>
         <Paper />
-        <Rock />
+        <Rock
+          onPress={() => {
+            console.log('pressed RoCK');
+          }}
+        />
       </View>
     </View>
   );
@@ -51,6 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 10,
     marginTop: 60,
+    marginBottom: 60,
   },
   moveText: { fontSize: 19 },
   iconContainer: {
