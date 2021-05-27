@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, Image, Dimensions, TextInput } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Image,
+  Dimensions,
+  TextInput,
+  ScrollView,
+} from 'react-native';
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
@@ -7,28 +14,28 @@ import Colors from '../constants/colors';
 
 const LandingScreen = props => {
   return (
-    <View style={styles.screen}>
-      <View style={styles.imageContainer}>
-        <Image source={require('../assets/RPS.jpg')} style={styles.image} />
+    <ScrollView>
+      <View style={styles.screen}>
+        <View style={styles.imageContainer}>
+          <Image source={require('../assets/RPS.jpg')} style={styles.image} />
+        </View>
+        <TitleText>WELCOME</TitleText>
+        <View style={styles.text}>
+          <BodyText style={styles.bodyText}>
+            This is the worst game ever with the ugliest design made by Agnes
+            and Caroline.
+          </BodyText>
+          <BodyText></BodyText>
+          <BodyText style={styles.bodyText}>
+            Text Bajs ang regler å blahaaa hnerhg rjghnoergrt jrehgirng
+            hduifdbgvgv your name rgu ang regler å blablabla
+          </BodyText>
+        </View>
+        {/* <View style={styles.inputButtonContainer}> */}
+        <TextInput style={styles.textInput}>Enter your name here</TextInput>
+        <MainButton onPress={() => props.onStartGame()}>START PLAY</MainButton>
       </View>
-
-      <TitleText>WELCOME</TitleText>
-      <View style={styles.text}>
-        <BodyText style={styles.bodyText}>
-          This is the worst game ever with the ugliest design made by Agnes and
-          Caroline.
-        </BodyText>
-        <BodyText></BodyText>
-        <BodyText style={styles.bodyText}>
-          Text Bajs ang regler å blahaaa hnerhg rjghnoergrt jrehgirng
-          rngioenghgnr ang regler å blaha bajsg,flrt ang regler å blahaaa
-          hduifdbgvgv your name rgu ang regler å blablabla
-        </BodyText>
-      </View>
-      {/* <View style={styles.inputButtonContainer}> */}
-      <TextInput style={styles.textInput}>Enter your name here</TextInput>
-      <MainButton onPress={() => props.onStartGame()}>START PLAY</MainButton>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -37,13 +44,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
     alignItems: 'center',
-    //justifyContent: 'center',
-    paddingVertical: 10,
+    justifyContent: 'center',
+    //paddingVertical: 10,
   },
   imageContainer: {
-    width: Dimensions.get('window').width * 0.7,
-    height: Dimensions.get('window').width * 0.7,
-    marginVertical: 15,
+    width: Dimensions.get('window').width * 0.6,
+    height: Dimensions.get('window').width * 0.6,
+    marginVertical: 2,
+    alignItems: 'center',
   },
   image: {
     width: '100%',
@@ -52,8 +60,8 @@ const styles = StyleSheet.create({
   text: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 50,
-    marginVertical: 35,
+    marginHorizontal: 30,
+    marginVertical: 25,
   },
   bodyText: { textAlign: 'center' },
   inputButtonContainer: {

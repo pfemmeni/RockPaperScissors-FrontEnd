@@ -30,7 +30,7 @@ const HomeScreen = props => {
       </Text>
       {/*<View style={styles.line}></View>*/}
       <MainButton style={styles.buttons}>JOIN OPEN GAME</MainButton>
-      <MenuButtons style={styles.menuButtons}></MenuButtons>
+      {/*<MenuButtons style={styles.menuButtons}></MenuButtons>*/}
     </View>
   );
 };

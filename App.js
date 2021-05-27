@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
 
-import LandingScreen from './screens/LandingScreen';
 import Colors from './constants/colors';
-import ImageRPS from './components/ImageRPS';
-import HomeScreen from './screens/HomeScreen';
-import MakeMoveScreen from './screens/MakeMoveScreen';
+import NavigationRPS from "./navigation/NavigationRPS";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -28,16 +27,16 @@ export default function App() {
       />
     );
   }
-  const startGameHandler = () => {};
+  //const startGameHandler = () => {};
 
-  let content = <HomeScreen></HomeScreen>;
+  //let content = <HomeScreen></HomeScreen>;
   //   // <LandingScreen onStartGame={startGameHandler} />;
 
   //  // if (startGameHandler) {
   //     //content =<MakeMoveScreen></MakeMoveScreen>;
   //     //content =
   //   }
-  return <SafeAreaView style={styles.screen}>{content}</SafeAreaView>;
+  return <NavigationRPS />;
 }
 
 const styles = StyleSheet.create({
