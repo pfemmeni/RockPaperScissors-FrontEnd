@@ -17,8 +17,8 @@ const Stack = createStackNavigator();
 
 function NavigationRPS() {
   return (
-    //<NavigationContainer>
-    <Stack.Navigator initialRouteName="Landing">
+    //<NavigationContainer>initialRouteName="Landing"
+    <Stack.Navigator>
       <Stack.Screen name="Landing" component={LandingScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="MakeMove" component={MakeMoveScreen} />
@@ -39,7 +39,7 @@ function NavigationTabRPS() {
     <NavigationContainer>
       <Tab.Navigator style={styles.tabNavigator}>
         <Tab.Screen name="Home" component={NavigationRPS} />
-        <Tab.Screen name="Game" component={WinnerScreen} />
+        <Tab.Screen name="Game" component={MakeMoveScreen} />
         <Tab.Screen name="Games" component={GameListScreen} />
       </Tab.Navigator>
     </NavigationContainer>

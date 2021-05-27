@@ -1,14 +1,13 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
 
-import Colors from './constants/colors';
 import NavigationRPS from './navigation/NavigationRPS';
+import { TokenContext } from './context/TokenContext';
 
-const TokenContext = createContext('');
+//const TokenContext = createContext('');
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -22,12 +21,13 @@ export default function App() {
   const [token, setToken] = useState('');
 
   useEffect(() => {
-    fetch("http://localhost:8080/auth/token")
+    fetch('http://192.168.50.139:8080/auth/token')
       .then(response => response.text())
       .then(newToken => {
         setToken(newToken);
         console.log('token:', token);
-      });
+      })
+      .catch(error => console.error(error));
   }, []);
 
   if (!dataLoaded) {
@@ -39,15 +39,7 @@ export default function App() {
       />
     );
   }
-  //const startGameHandler = () => {};
 
-  //let content = <HomeScreen></HomeScreen>;
-  //   // <LandingScreen onStartGame={startGameHandler} />;
-
-  //  // if (startGameHandler) {
-  //     //content =<MakeMoveScreen></MakeMoveScreen>;
-  //     //content =
-  //   }
   return (
     <TokenContext.Provider value={token}>
       <NavigationRPS />
@@ -60,3 +52,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+//const startGameHandler = () => {};
+
+//let content = <HomeScreen></HomeScreen>;
+//   // <LandingScreen onStartGame={startGameHandler} />;
+
+//  // if (startGameHandler) {
+//     //content =<MakeMoveScreen></MakeMoveScreen>;
+//     //content =
+//   }

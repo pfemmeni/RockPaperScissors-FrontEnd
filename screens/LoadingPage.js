@@ -6,10 +6,12 @@ import TitleText from '../components/TitleText';
 import MenuButtons from '../components/MenuButtons';
 import Colors from '../constants/colors';
 
-const HomeScreen = props => {
-    return <View>
-        <Text>Loading</Text>
+const LoadingPage = props => {
+  return (
+    <View>
+      <Text>Loading</Text>
     </View>
+  );
 };
 
-export default HomeScreen;
+export default LoadingPage;
