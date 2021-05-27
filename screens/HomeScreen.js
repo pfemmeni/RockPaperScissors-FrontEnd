@@ -12,19 +12,27 @@ const HomeScreen = props => {
       <TitleText>GAME RULES</TitleText>
       <View style={styles.textContainer}>
         <BodyText style={styles.bodyText}>
-          Lorem Text Bajs ang regler rngioenghgnr ang regler å blaha,flrt ang
-          regler å blahaaa hduifdbgvgv your name rgu ang regler å blablabla
+          In the Game you will choose one of the following symbols:
         </BodyText>
+        <BodyText>ROCK - SCISSORS - PAPER</BodyText>
+
         <BodyText />
-        <BodyText style={styles.bodyText}>
-          Text Bajs ang regler å blahaaa hnerhg rjghnoergrt jrehgirng
-          rngioenghgnr ang regler å blaha bajsg,flrt ang regler å blahaaa
-          hduifdbgvgv your name rgu ang regler å blablabla
-        </BodyText>
+        <BodyText style={styles.bodyText}>The Winner will be:</BodyText>
+        <BodyText> ROCK wins over SCISSORS</BodyText>
+        <BodyText style={styles.bodyText}>SCISSORS wins over PAPER</BodyText>
+        <BodyText style={styles.bodyText}> PAPER wins over ROCK</BodyText>
+        <BodyText>In case of the same symbol it's a Draw</BodyText>
         <BodyText />
         <BodyText style={styles.bodyText}>GOOD LUCK!</BodyText>
       </View>
-      <MainButton style={styles.buttons}>START NEW GAME</MainButton>
+      <MainButton
+        style={styles.buttons}
+        onClick={() => {
+          startGameHandler;
+        }}
+      >
+        START NEW GAME
+      </MainButton>
       <Text style={styles.buttons}>
         ---------------------- OR ----------------------
       </Text>
