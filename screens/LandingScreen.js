@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import {
   View,
   StyleSheet,
@@ -11,6 +11,7 @@ import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
 import Colors from '../constants/colors';
+import { TokenContext } from '../context/TokenContext';
 
 // const TokenContext = createContext('');
 
@@ -26,6 +27,20 @@ const LandingScreen = props => {
   //       console.log('token:', token);
   //     });
   // }, []);
+  const token = useContext(TokenContext);
+
+  const setPlayerNameAndNavigateToHome = playerName => {
+    fetch('http://localhost:8080/user/name', {
+      method: 'POST',
+      headers: {
+        token: token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: playerName,
+      }),
+    }).then(response => navigation.navigate('Home'));
+  };
 
   return (
     //<TokenContext.Provider value={token}>
@@ -42,9 +57,12 @@ const LandingScreen = props => {
           </BodyText>
           <BodyText></BodyText>
           <BodyText style={styles.bodyText}>
-            Text Bajs ang regler å blahaaa hnerhg rjghnoergrt jrehgirng
-            hduifdbgvgv your name rgu ang regler å blablabla
+            This is a game, and this game may be fun, it's up to you to find
+            that out. When you press "start play" you will find the rules of the
+            game.{' '}
           </BodyText>
+          <BodyText>And remember to have lots of fun.</BodyText>
+
           {/*  <BodyText>{token}</BodyText>*/}
         </View>
         {/* <View style={styles.inputButtonContainer}> */}
