@@ -4,30 +4,27 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  Input,
   TextInput,
   ScrollView,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
+
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
 import Colors from '../constants/colors';
 import { TokenContext } from '../context/TokenContext';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-// const TokenContext = createContext('');
-
-const LandingScreen = props => {
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [token, setToken] = useState('');
-
-  // useEffect(() => {
-  //   fetch('http://localhost:8080/auth/token')
-  //     .then(response => response.text())
-  //     .then(newToken => {
-  //       setToken(newToken);
-  //       console.log('token:', token);
-  //     });
-  // }, []);
+const LandingScreen = (props, { navigation }) => {
   const token = useContext(TokenContext);
+  const [enteredNameValue, setEnteredNameValue] = useState('');
+  const [selectedName, setSelectedName] = useState();
+  const [confirmed, setConfirmed] = useState(false);
 
   const setPlayerNameAndNavigateToHome = playerName => {
     fetch('http://localhost:8080/user/name', {
@@ -42,36 +39,81 @@ const LandingScreen = props => {
     }).then(response => navigation.navigate('Home'));
   };
 
-  return (
-    //<TokenContext.Provider value={token}>
-    <ScrollView>
-      <View style={styles.screen}>
-        <View style={styles.imageContainer}>
-          <Image source={require('../assets/RPS.jpg')} style={styles.image} />
-        </View>
-        <TitleText>WELCOME</TitleText>
-        <View style={styles.text}>
-          <BodyText style={styles.bodyText}>
-            This is the worst game ever with the ugliest design made by Agnes
-            and Caroline.
-          </BodyText>
-          <BodyText></BodyText>
-          <BodyText style={styles.bodyText}>
-            This is a game, and this game may be fun, it's up to you to find
-            that out. When you press "start play" you will find the rules of the
-            game.{' '}
-          </BodyText>
-          <BodyText>And remember to have lots of fun.</BodyText>
+  const textInputHandler = inputText => {
+    setEnteredNameValue(inputText);
+    //console.log('här skall ett webanrop med namnet bli SetName');
+  };
 
-          {/*  <BodyText>{token}</BodyText>*/}
-        </View>
-        {/* <View style={styles.inputButtonContainer}> */}
-        <TextInput style={styles.textInput}>Enter your name here</TextInput>
-        <MainButton onPress={() => props.onStartGame()}>START PLAY</MainButton>
-      </View>
+  const onStartGameHandler = props => {
+    const chosenName = enteredNameValue;
+    if (enteredNameValue === '') {
+      console.log('vill spela anonym');
+      return navigation.navigate('Home');
+    }
+
+    setConfirmed(true);
+    setSelectedName(chosenName);
+    setEnteredNameValue('');
+    Keyboard.dismiss();
+
+    //console.log('game started, här skall ett webanrop till servern vara');
+  };
+
+  if (confirmed) {
+    return navigation.navigate({ routeName: 'Home' });
+  }
+
+  return (
+    <ScrollView>
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            Keyboard.dismiss();
+          }}
+        >
+          <View style={styles.screen}>
+            <View style={styles.imageContainer}>
+              <Image
+                source={require('../assets/RPS.jpg')}
+                style={styles.image}
+              />
+            </View>
+            <TitleText>WELCOME</TitleText>
+            <View style={styles.text}>
+              <BodyText style={styles.bodyText}>
+                This is the worst game ever with the ugliest design made by
+                Agnes and Caroline.
+              </BodyText>
+              <BodyText></BodyText>
+              <BodyText style={styles.bodyText}>
+                This is a game, and this game may be fun, it's up to you to find
+                that out. When you press "start play" you will find the rules of
+                the game.{' '}
+              </BodyText>
+              <BodyText>And remember to have lots of fun.</BodyText>
+
+              {/*  <BodyText>{token}</BodyText>*/}
+            </View>
+            {/* <View style={styles.inputButtonContainer}> */}
+            <TextInput
+              style={styles.textInput}
+              placeholder="Enter your name here"
+              blurOnSubmit
+              autoCapitalize="none"
+              onChangeText={textInputHandler}
+              autoCorrect={false}
+              value={enteredNameValue}
+            />
+            <MainButton onPress={onStartGameHandler}>START PLAY</MainButton>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </ScrollView>
-    // </TokenContext.Provider>
   );
+};
+
+LandingScreen.navigationOptions = {
+  headerTitle: 'Welcome',
 };
 
 const styles = StyleSheet.create({

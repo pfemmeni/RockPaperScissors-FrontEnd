@@ -1,18 +1,23 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import BodyText from '../components/BodyText';
+import TitleText from '../components/TitleText';
 import { FontAwesome } from '@expo/vector-icons';
 
 const Scissors = props => {
   return (
     <View style={styles.iconContainer}>
-      <FontAwesome
-        name="hand-scissors-o"
-        size={50}
-        color="black"
-        style={styles.icon}
-      />
-      <BodyText>SCISSORS</BodyText>
+      <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
+        <View style={{ alignItems: 'center' }}>
+          <FontAwesome
+            name="hand-scissors-o"
+            size={50}
+            color="black"
+            style={styles.icon}
+          />
+          <BodyText>SCISSORS</BodyText>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -1,22 +1,22 @@
 import React from 'react';
-import { View, StyleSheet, Image, Dimensions, Text } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import BodyText from '../components/BodyText';
 import { FontAwesome } from '@expo/vector-icons';
-
-import TitleText from '../components/TitleText';
-
-import Colors from '../constants/colors';
 
 const Paper = props => {
   return (
     <View style={styles.iconContainer}>
-      <FontAwesome
-        name="hand-paper-o"
-        size={50}
-        color="black"
-        style={styles.icon}
-      />
-      <BodyText>PAPER</BodyText>
+      <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
+        <View style={{ alignItems: 'center' }}>
+          <FontAwesome
+            name="hand-paper-o"
+            size={50}
+            color="black"
+            style={styles.icon}
+          />
+          <BodyText>PAPER</BodyText>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
