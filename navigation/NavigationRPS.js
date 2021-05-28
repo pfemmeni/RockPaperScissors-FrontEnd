@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 import LandingScreen from '../screens/LandingScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -34,15 +35,23 @@ function NavigationRPS() {
 
 const Tab = createBottomTabNavigator();
 
+//const Tab = createMaterialBottomTabNavigator(); med denna ska man kunna designa tabsen, funkar dock inte
+//      <Tab.Navigator
+// initialRouteName="Home"
+// activeColor="#f0edf6"
+// inactiveColor="#3e2465"
+// barStyle={{ backgroundColor: '#694fad' }}
+// >
+
 function NavigationTabRPS() {
   return (
-    // <NavigationContainer>
-      <Tab.Navigator style={styles.tabNavigator}>
-        <Tab.Screen name="Home" component={NavigationRPS} />
-        <Tab.Screen name="Game" component={MakeMoveScreen} />
-        <Tab.Screen name="Games" component={GameListScreen} />
-      </Tab.Navigator>
-    // </NavigationContainer>
+    /*  <NavigationContainer> */
+    <Tab.Navigator style={styles.tabNavigator}>
+      <Tab.Screen name="Home" component={NavigationRPS} />
+      <Tab.Screen name="Game" component={MakeMoveScreen} />
+      <Tab.Screen name="Games" component={GameListScreen} />
+    </Tab.Navigator>
+    /* </NavigationContainer> */
   );
 }
 

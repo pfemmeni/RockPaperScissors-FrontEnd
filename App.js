@@ -44,7 +44,7 @@ export default function App() {
   return (
     <TokenContext.Provider value={token}>
       <NavigationContainer>
-      <NavigationRPS />
+        <NavigationRPS />
       </NavigationContainer>
     </TokenContext.Provider>
   );
