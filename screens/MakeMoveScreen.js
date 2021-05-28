@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Image, Dimensions, Text } from 'react-native';
 import BodyText from '../components/BodyText';
 import { FontAwesome } from '@expo/vector-icons';
-
+import { NavigationContainer } from '@react-navigation/native';
 import TitleText from '../components/TitleText';
 
 import Colors from '../constants/colors';
@@ -11,22 +11,40 @@ import Paper from '../components/Paper';
 import Rock from '../components/Rock';
 import MainButton from '../components/MainButton';
 import { useState } from 'react/cjs/react.development';
+import WinnerScreen from '../screens/WinnerScreen';
 
 const MakeMoveScreen = props => {
   const [madeMove, setMadeMove] = useState(false);
 
-  if (madeMove) {
-    playAgainButton;
-    setMadeMove(false);
-  }
 
-  const playAgainButton = () => {
-    return (
+
+    //;,setMadeMove(false)
+
+let playAgainButton;
+  if (madeMove) {
+    playAgainButton = (
       <View style={styles.buttonContainer}>
-        <MainButton style={styles.button}>PLAY AGAIN</MainButton>
+        <MainButton onPress={() => {props.navigation.navigate("Home")} } style={styles.button}>PLAY AGAIN</MainButton>
       </View>
     );
+
   };
+
+  const scissorsPressedHandler =  ({navigation}) => {
+    setMadeMove(true);
+    console.log('pressed Scissors');
+    props.navigation.navigate("Winner")
+  }
+  const rockPressedHandler = ({navigation}) => {
+    setMadeMove(true);
+    console.log('pressed Rock');
+    props.navigation.navigate("Lost")
+  }
+  const paperPressedHandler = ({navigation}) => {
+    setMadeMove(true);
+    console.log('pressed Paper');
+    props.navigation.navigate("Draw")
+  }
 
   return (
     <View style={styles.screen}>
@@ -42,21 +60,16 @@ const MakeMoveScreen = props => {
       </View>
       <View style={styles.iconContainer}>
         <Scissors
-          onPress={() => {
-            madeMove(true), console.log('pressed Scissors');
-          }}
+          onPress={scissorsPressedHandler}
         />
       </View>
       <View style={styles.iconContainer}>
         <Paper
-          onPress={() => {
-            madeMove(true), console.log('pressed PAPER');
-          }}
+            onPress={paperPressedHandler}
+
         />
         <Rock
-          onPress={() => {
-            madeMove(true), console.log('pressed RoCK');
-          }}
+            onPress={rockPressedHandler}
         />
       </View>
       {playAgainButton}

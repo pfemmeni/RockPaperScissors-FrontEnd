@@ -1,5 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Image, Dimensions, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
@@ -37,7 +40,7 @@ const HomeScreen = props => {
         ---------------------- OR ----------------------
       </Text>
       {/*<View style={styles.line}></View>*/}
-      <MainButton style={styles.buttons}>JOIN OPEN GAME</MainButton>
+      <MainButton onPress={() => {props.navigation.navigate("Games")}} style={styles.buttons}>JOIN OPEN GAME</MainButton>
       {/*<MenuButtons style={styles.menuButtons}></MenuButtons>*/}
     </View>
   );

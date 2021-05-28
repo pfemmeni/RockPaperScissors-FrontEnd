@@ -7,6 +7,9 @@ import {
   Text,
   ScrollView,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
@@ -21,6 +24,9 @@ const WinnerScreen = props => {
 
       <View style={styles.buttonContainer}>
         <MainButton>PLAY AGAIN</MainButton>
+        <View style={styles.buttonContainer}>
+          <MainButton onPress={() => {props.navigation.navigate("Home")} } style={styles.button}>PLAY AGAIN</MainButton>
+        </View>
       </View>
     </View>
   );
@@ -39,6 +45,13 @@ const styles = StyleSheet.create({
   buttonContainer: {
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
+  },
+/*  buttonContainer: {
+    alignItems: 'center',
+  },*/
+  button: {
+    height: 20,
+    width: 20,
   },
 });
 

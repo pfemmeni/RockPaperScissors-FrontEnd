@@ -1,5 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
@@ -11,6 +14,9 @@ const DrawScreen = props => {
       <TitleText>IT IS DRAW</TitleText>
       <TitleText>NONE OR BOTH WON!!!</TitleText>
       <MainButton>PLAY AGAIN</MainButton>
+        <View style={styles.buttonContainer}>
+            <MainButton onPress={() => {props.navigation.navigate("Home")} } style={styles.button}>PLAY AGAIN</MainButton>
+        </View>
     </View>
   );
 };
@@ -22,6 +28,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+    buttonContainer: {
+        alignItems: 'center',
+    },
+    button: {
+        height: 20,
+        width: 20,
+    },
 });
 
 export default DrawScreen;

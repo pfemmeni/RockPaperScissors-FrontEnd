@@ -36,13 +36,13 @@ const Tab = createBottomTabNavigator();
 
 function NavigationTabRPS() {
   return (
-    <NavigationContainer>
+    // <NavigationContainer>
       <Tab.Navigator style={styles.tabNavigator}>
         <Tab.Screen name="Home" component={NavigationRPS} />
         <Tab.Screen name="Game" component={MakeMoveScreen} />
         <Tab.Screen name="Games" component={GameListScreen} />
       </Tab.Navigator>
-    </NavigationContainer>
+    // </NavigationContainer>
   );
 }
 

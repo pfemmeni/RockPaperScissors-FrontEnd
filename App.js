@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
 
 import NavigationRPS from './navigation/NavigationRPS';
 import { TokenContext } from './context/TokenContext';
@@ -21,7 +22,7 @@ export default function App() {
   const [token, setToken] = useState('');
 
   useEffect(() => {
-    fetch('http://192.168.50.139:8080/auth/token')
+    fetch('http://192.168.50.139:8080/auth/token') //ska vara localhost här egentligen, men funkar inte på Carolines dator
       .then(response => response.text())
       .then(newToken => {
         setToken(newToken);
@@ -42,7 +43,9 @@ export default function App() {
 
   return (
     <TokenContext.Provider value={token}>
+      <NavigationContainer>
       <NavigationRPS />
+      </NavigationContainer>
     </TokenContext.Provider>
   );
 }
