@@ -44,7 +44,7 @@ const LandingScreen = (props, { navigation }) => {
     //console.log('här skall ett webanrop med namnet bli SetName');
   };
 
-  const onStartGameHandler = (props) => {
+  const onStartGameHandler = props => {
     const chosenName = enteredNameValue;
     if (enteredNameValue === '') {
       console.log('vill spela anonym');
@@ -60,7 +60,7 @@ const LandingScreen = (props, { navigation }) => {
   };
 
   if (confirmed) {
-    navigation.navigate({ routeName: "Home" });
+    navigation.navigate({ routeName: 'Home' });
   }
 
   return (
@@ -105,7 +105,13 @@ const LandingScreen = (props, { navigation }) => {
               value={enteredNameValue}
             />
             <MainButton onPress={onStartGameHandler}>START PLAY</MainButton>
-            <MainButton onPress={() => {props.navigation.replace("Home")}}>START PLAY</MainButton>
+            <MainButton
+              onPress={() => {
+                props.navigation.replace('Home');
+              }}
+            >
+              START PLAY
+            </MainButton>
             {/*replace för att man inte skall komma tillbaka till den sidan igen, annars navigate*/}
           </View>
         </TouchableWithoutFeedback>

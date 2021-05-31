@@ -23,9 +23,16 @@ const WinnerScreen = props => {
       <TitleText>YOU ARE THE WINNER!!!</TitleText>
 
       <View style={styles.buttonContainer}>
-        <MainButton>PLAY AGAIN</MainButton>
+        {/* <MainButton>PLAY AGAIN</MainButton> */}
         <View style={styles.buttonContainer}>
-          <MainButton onPress={() => {props.navigation.navigate("Home")} } style={styles.button}>PLAY AGAIN</MainButton>
+          <MainButton
+            onPress={() => {
+              props.navigation.navigate('Home');
+            }}
+            style={styles.button}
+          >
+            PLAY AGAIN
+          </MainButton>
         </View>
       </View>
     </View>
@@ -46,7 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
   },
-/*  buttonContainer: {
+  /*  buttonContainer: {
     alignItems: 'center',
   },*/
   button: {

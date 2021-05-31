@@ -13,10 +13,17 @@ const DrawScreen = props => {
     <View style={styles.screen}>
       <TitleText>IT IS DRAW</TitleText>
       <TitleText>NONE OR BOTH WON!!!</TitleText>
-      <MainButton>PLAY AGAIN</MainButton>
-        <View style={styles.buttonContainer}>
-            <MainButton onPress={() => {props.navigation.navigate("Home")} } style={styles.button}>PLAY AGAIN</MainButton>
-        </View>
+      {/* <MainButton>PLAY AGAIN</MainButton> */}
+      <View style={styles.buttonContainer}>
+        <MainButton
+          onPress={() => {
+            props.navigation.navigate('Home');
+          }}
+          style={styles.button}
+        >
+          PLAY AGAIN
+        </MainButton>
+      </View>
     </View>
   );
 };
@@ -28,13 +35,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-    buttonContainer: {
-        alignItems: 'center',
-    },
-    button: {
-        height: 20,
-        width: 20,
-    },
+  buttonContainer: {
+    alignItems: 'center',
+  },
+  button: {
+    height: 20,
+    width: 20,
+  },
 });
 
 export default DrawScreen;

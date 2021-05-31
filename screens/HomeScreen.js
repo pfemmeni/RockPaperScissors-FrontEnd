@@ -40,7 +40,14 @@ const HomeScreen = props => {
         ---------------------- OR ----------------------
       </Text>
       {/*<View style={styles.line}></View>*/}
-      <MainButton onPress={() => {props.navigation.navigate("Games")}} style={styles.buttons}>JOIN OPEN GAME</MainButton>
+      <MainButton
+        onPress={() => {
+          props.navigation.navigate('Games');
+        }}
+        style={styles.buttons}
+      >
+        JOIN OPEN GAME
+      </MainButton>
       {/*<MenuButtons style={styles.menuButtons}></MenuButtons>*/}
     </View>
   );

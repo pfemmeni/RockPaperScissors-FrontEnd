@@ -16,35 +16,39 @@ import WinnerScreen from '../screens/WinnerScreen';
 const MakeMoveScreen = props => {
   const [madeMove, setMadeMove] = useState(false);
 
+  //;,setMadeMove(false)
 
-
-    //;,setMadeMove(false)
-
-let playAgainButton;
+  let playAgainButton;
   if (madeMove) {
     playAgainButton = (
       <View style={styles.buttonContainer}>
-        <MainButton onPress={() => {props.navigation.navigate("Home")} } style={styles.button}>PLAY AGAIN</MainButton>
+        <MainButton
+          onPress={() => {
+            props.navigation.navigate('Home');
+          }}
+          style={styles.button}
+        >
+          PLAY AGAIN
+        </MainButton>
       </View>
     );
+  }
 
-  };
-
-  const scissorsPressedHandler =  ({navigation}) => {
+  const scissorsPressedHandler = ({ navigation }) => {
     setMadeMove(true);
     console.log('pressed Scissors');
-    props.navigation.navigate("Winner")
-  }
-  const rockPressedHandler = ({navigation}) => {
+    props.navigation.navigate('Winner');
+  };
+  const rockPressedHandler = ({ navigation }) => {
     setMadeMove(true);
     console.log('pressed Rock');
-    props.navigation.navigate("Lost")
-  }
-  const paperPressedHandler = ({navigation}) => {
+    props.navigation.navigate('Lost');
+  };
+  const paperPressedHandler = ({ navigation }) => {
     setMadeMove(true);
     console.log('pressed Paper');
-    props.navigation.navigate("Draw")
-  }
+    props.navigation.navigate('Draw');
+  };
 
   return (
     <View style={styles.screen}>
@@ -59,18 +63,11 @@ let playAgainButton;
         <BodyText>To make your move press on sign image</BodyText>
       </View>
       <View style={styles.iconContainer}>
-        <Scissors
-          onPress={scissorsPressedHandler}
-        />
+        <Scissors onPress={scissorsPressedHandler} />
       </View>
       <View style={styles.iconContainer}>
-        <Paper
-            onPress={paperPressedHandler}
-
-        />
-        <Rock
-            onPress={rockPressedHandler}
-        />
+        <Paper onPress={paperPressedHandler} />
+        <Rock onPress={rockPressedHandler} />
       </View>
       {playAgainButton}
       {/*       <View style={styles.buttonContainer}>
