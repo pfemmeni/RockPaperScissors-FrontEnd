@@ -36,7 +36,7 @@ const LandingScreen = (props, { navigation }) => {
       body: JSON.stringify({
         name: playerName,
       }),
-    }).then(response => navigation.navigate('Home'));
+    }).then(response => navigation.navigate('Home', playerName));
   };
 
   const textInputHandler = inputText => {
@@ -50,11 +50,11 @@ const LandingScreen = (props, { navigation }) => {
       console.log('vill spela anonym');
       navigation.navigate('Home');
     }
-
     setConfirmed(true);
     setSelectedName(chosenName);
     setEnteredNameValue('');
     Keyboard.dismiss();
+    setPlayerNameAndNavigateToHome();
 
     //console.log('game started, här skall ett webanrop till servern vara');
   };

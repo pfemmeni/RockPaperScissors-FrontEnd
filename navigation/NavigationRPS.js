@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import {View, Text, StyleSheet, Platform} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
+import {FontAwesome} from "@expo/vector-icons";
 
 import LandingScreen from '../screens/LandingScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -13,54 +14,55 @@ import GameListScreen from '../screens/GameListScreen';
 import WinnerScreen from '../screens/WinnerScreen';
 import LooseScreen from '../screens/LooseScreen';
 import DrawScreen from '../screens/DrawScreen';
+import Colors from '../constants/colors';
 
 const Stack = createStackNavigator();
 
 function NavigationRPS() {
-  return (
-    //<NavigationContainer>initialRouteName="Landing"
-    <Stack.Navigator>
-      <Stack.Screen name="Landing" component={LandingScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="MakeMove" component={MakeMoveScreen} />
-      <Stack.Screen name="Loading" component={LoadingPage} />
-      <Stack.Screen name="Games" component={GameListScreen} />
-      <Stack.Screen name="Winner" component={WinnerScreen} />
-      <Stack.Screen name="Lost" component={LooseScreen} />
-      <Stack.Screen name="Draw" component={DrawScreen} />
-    </Stack.Navigator>
-    //</NavigationContainer>
-  );
+    return (
+        //<NavigationContainer>initialRouteName="Landing"
+        <Stack.Navigator>
+            <Stack.Screen name="Landing" component={LandingScreen}/>
+            <Stack.Screen name="Home" component={HomeScreen}/>
+            <Stack.Screen name="MakeMove" component={MakeMoveScreen}/>
+            <Stack.Screen name="Loading" component={LoadingPage}/>
+            <Stack.Screen name="Games" component={GameListScreen}/>
+            <Stack.Screen name="Winner" component={WinnerScreen} />
+            <Stack.Screen name="Lost" component={LooseScreen} />
+            <Stack.Screen name="Draw" component={DrawScreen}/>
+        </Stack.Navigator>
+        //</NavigationContainer>tabBarVisible={false}
+    );
 }
 
 const Tab = createBottomTabNavigator();
 
-//const Tab = createMaterialBottomTabNavigator(); med denna ska man kunna designa tabsen, funkar dock inte
-//      <Tab.Navigator
-// initialRouteName="Home"
-// activeColor="#f0edf6"
-// inactiveColor="#3e2465"
-// barStyle={{ backgroundColor: '#694fad' }}
-// >
-
 function NavigationTabRPS() {
-  return (
-    /*  <NavigationContainer> */
-    <Tab.Navigator style={styles.tabNavigator}>
-      <Tab.Screen name="Home" component={NavigationRPS} />
-      <Tab.Screen name="Game" component={MakeMoveScreen} />
-      <Tab.Screen name="Games" component={GameListScreen} />
-    </Tab.Navigator>
-    /* </NavigationContainer> */
-  );
-}
+    return (
+        <Tab.Navigator screenOptions={({route}) => ({
+            tabBarIcon: tabInfo => {
+                let iconName;
 
-const styles = StyleSheet.create({
-  tabNavigator: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
-});
+                if (route.name === "Home") {
+                    iconName = "home"
+                } else if (route.name === "Game") {
+                    iconName = "gamepad"
+                } else if (route.name === "Games") {
+                    iconName = "list-ul"
+                }
+                return <FontAwesome
+                    name={iconName}
+                    size={25}
+                    color="black"
+                />
+            },
+        })}
+                       tabBarOptions={{activeTintColor: Colors.primaryColor, inactiveTintColor: Colors.greyish}}>
+            <Tab.Screen name="Home" component={NavigationRPS}/>
+            <Tab.Screen name="Game" component={MakeMoveScreen}/>
+            <Tab.Screen name="Games" component={GameListScreen}/>
+        </Tab.Navigator>
+    );
+}
 
 export default NavigationTabRPS;

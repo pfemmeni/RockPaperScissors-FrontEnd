@@ -7,14 +7,21 @@ import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
 import Colors from '../constants/colors';
+import {FontAwesome} from "@expo/vector-icons";
 
 const DrawScreen = props => {
   return (
     <View style={styles.screen}>
       <TitleText>IT IS DRAW</TitleText>
       <TitleText>NONE OR BOTH WON!!!</TitleText>
-      {/* <MainButton>PLAY AGAIN</MainButton> */}
+      <FontAwesome
+          name="meh-o"
+          size={150}
+          color="black"
+          style={styles.icon}
+      />
       <View style={styles.buttonContainer}>
+
         <MainButton
           onPress={() => {
             props.navigation.navigate('Home');
@@ -42,6 +49,9 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
   },
+  icon: {
+    marginVertical: 30
+  }
 });
 
 export default DrawScreen;

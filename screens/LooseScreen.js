@@ -7,13 +7,19 @@ import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
 import Colors from '../constants/colors';
+import {FontAwesome} from "@expo/vector-icons";
 
 const LooseScreen = props => {
   return (
     <View style={styles.screen}>
       <TitleText>BETTER LUCK NEXT TIME</TitleText>
       <TitleText>YOU LOST!!!</TitleText>
-      {/* <MainButton>PLAY AGAIN</MainButton> */}
+      <FontAwesome
+          name="thumbs-o-down"
+          size={150}
+          color="black"
+          style={styles.icon}
+      />
       <View style={styles.buttonContainer}>
         <MainButton
           onPress={() => {
@@ -42,6 +48,9 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
   },
+  icon: {
+    marginVertical: 30
+  }
 });
 
 export default LooseScreen;

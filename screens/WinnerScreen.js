@@ -15,16 +15,20 @@ import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
 import MenuButtons from '../components/MenuButtons';
 import Colors from '../constants/colors';
+import {FontAwesome} from "@expo/vector-icons";
 
 const WinnerScreen = props => {
   return (
     <View style={styles.screen}>
       <TitleText>CONGRATULATIONS</TitleText>
       <TitleText>YOU ARE THE WINNER!!!</TitleText>
-
+      <FontAwesome
+          name="trophy"
+          size={200}
+          color="gold"
+          style={styles.icon}
+      />
       <View style={styles.buttonContainer}>
-        {/* <MainButton>PLAY AGAIN</MainButton> */}
-        <View style={styles.buttonContainer}>
           <MainButton
             onPress={() => {
               props.navigation.navigate('Home');
@@ -33,7 +37,6 @@ const WinnerScreen = props => {
           >
             PLAY AGAIN
           </MainButton>
-        </View>
       </View>
     </View>
   );
@@ -46,20 +49,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textContainer: {
-    justifyContent: 'center',
-  },
   buttonContainer: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    alignItems: 'center'
   },
-  /*  buttonContainer: {
-    alignItems: 'center',
-  },*/
   button: {
     height: 20,
     width: 20,
   },
+  icon: {
+    marginVertical: 30
+  }
 });
 
 export default WinnerScreen;

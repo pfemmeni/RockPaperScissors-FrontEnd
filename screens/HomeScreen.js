@@ -12,6 +12,7 @@ import Colors from '../constants/colors';
 const HomeScreen = props => {
   return (
     <View style={styles.screen}>
+        <TitleText>Hi {props.playerName}</TitleText>
       <TitleText>GAME RULES</TitleText>
       <View style={styles.textContainer}>
         <BodyText style={styles.bodyText}>

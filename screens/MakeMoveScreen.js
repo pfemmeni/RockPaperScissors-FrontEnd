@@ -52,7 +52,7 @@ const MakeMoveScreen = props => {
 
   return (
     <View style={styles.screen}>
-      <Image></Image>
+      <Image />
       <View style={styles.textContainer}>
         <TitleText>YOUR OPPONENT</TitleText>
         <TitleText>{/*{opponent.name}*/}</TitleText>
