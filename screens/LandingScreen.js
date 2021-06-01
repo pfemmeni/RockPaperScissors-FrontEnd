@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Image,
   Dimensions,
-  Input,
   TextInput,
   ScrollView,
   KeyboardAvoidingView,
@@ -22,12 +21,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const LandingScreen = (props, { navigation }) => {
   const token = useContext(TokenContext);
-  const [enteredNameValue, setEnteredNameValue] = useState('');
+  const [playerName, setPlayerName] = useState('');
   const [selectedName, setSelectedName] = useState();
   const [confirmed, setConfirmed] = useState(false);
 
-  const setPlayerNameAndNavigateToHome = playerName => {
-    fetch('http://localhost:8080/user/name', {
+  const sendUserNameToServerAndNavigateToHome = (
+      playerName,
+    { navigation }
+  ) => {
+    if (!playerName) {
+      return;
+    }
+    fetch('http://192.168.50.139:8080/user/name', {
+      //ska vara localhost men funkar inte
       method: 'POST',
       headers: {
         token: token,
@@ -40,28 +46,9 @@ const LandingScreen = (props, { navigation }) => {
   };
 
   const textInputHandler = inputText => {
-    setEnteredNameValue(inputText);
+    setPlayerName(inputText);
     //console.log('här skall ett webanrop med namnet bli SetName');
   };
-
-  const onStartGameHandler = props => {
-    const chosenName = enteredNameValue;
-    if (enteredNameValue === '') {
-      console.log('vill spela anonym');
-      navigation.navigate('Home');
-    }
-    setConfirmed(true);
-    setSelectedName(chosenName);
-    setEnteredNameValue('');
-    Keyboard.dismiss();
-    setPlayerNameAndNavigateToHome();
-
-    //console.log('game started, här skall ett webanrop till servern vara');
-  };
-
-  if (confirmed) {
-    navigation.navigate({ routeName: 'Home' });
-  }
 
   return (
     <ScrollView>
@@ -102,16 +89,19 @@ const LandingScreen = (props, { navigation }) => {
               autoCapitalize="none"
               onChangeText={textInputHandler}
               autoCorrect={false}
-              value={enteredNameValue}
+              value={playerName}
             />
-            <MainButton onPress={onStartGameHandler}>START PLAY</MainButton>
-            <MainButton
+            {/* <MainButton onPress={onStartPlayAndGoToHomeScreenHandler} value={enteredNameValue}> */}
+            <MainButton onPress={sendUserNameToServerAndNavigateToHome}>
+              START PLAY
+            </MainButton>
+            {/*        <MainButton
               onPress={() => {
                 props.navigation.replace('Home');
               }}
             >
               START PLAY
-            </MainButton>
+            </MainButton>*/}
             {/*replace för att man inte skall komma tillbaka till den sidan igen, annars navigate*/}
           </View>
         </TouchableWithoutFeedback>

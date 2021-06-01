@@ -20,7 +20,7 @@ const Stack = createStackNavigator();
 
 function NavigationRPS() {
     return (
-        //<NavigationContainer>initialRouteName="Landing"
+       /* <NavigationContainer >*/
         <Stack.Navigator>
             <Stack.Screen name="Landing" component={LandingScreen}/>
             <Stack.Screen name="Home" component={HomeScreen}/>
@@ -31,7 +31,7 @@ function NavigationRPS() {
             <Stack.Screen name="Lost" component={LooseScreen} />
             <Stack.Screen name="Draw" component={DrawScreen}/>
         </Stack.Navigator>
-        //</NavigationContainer>tabBarVisible={false}
+        /*</NavigationContainer>*/
     );
 }
 
@@ -66,3 +66,6 @@ function NavigationTabRPS() {
 }
 
 export default NavigationTabRPS;
+
+
+//tabBarVisible={false}

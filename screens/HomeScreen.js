@@ -1,18 +1,27 @@
 import React from 'react';
-import { View, StyleSheet, Image, Dimensions, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { View, StyleSheet, Text, useContext, createContext } from 'react-native';
 
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
-import MenuButtons from '../components/MenuButtons';
+import { GameContext } from '../context/GameContext';
 import Colors from '../constants/colors';
+import {TokenContext} from "../context/TokenContext";
 
-const HomeScreen = props => {
+
+
+
+const HomeScreen = (props, { navigation }) => {
+ // const token = useContext(TokenContext);
+  //const game = useContext(GameContext);
+  //const playerName = props.navigation.getParam('playerName');
+  const startGameHandler = () => {
+    console.log('game start');
+  };
+
   return (
     <View style={styles.screen}>
-        <TitleText>Hi {props.playerName}</TitleText>
+      <TitleText>Hi {props.playerName}</TitleText>
       <TitleText>GAME RULES</TitleText>
       <View style={styles.textContainer}>
         <BodyText style={styles.bodyText}>
@@ -29,12 +38,7 @@ const HomeScreen = props => {
         <BodyText />
         <BodyText style={styles.bodyText}>GOOD LUCK!</BodyText>
       </View>
-      <MainButton
-        style={styles.buttons}
-        onClick={() => {
-          startGameHandler;
-        }}
-      >
+      <MainButton style={styles.buttons} onClick={startGameHandler}>
         START NEW GAME
       </MainButton>
       <Text style={styles.buttons}>
