@@ -8,7 +8,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import NavigationRPS from './navigation/NavigationRPS';
 import {TokenContext} from './context/TokenContext';
 import {GameContext} from './context/GameContext';
-
+import Fetch from "./fetch/Fetch";
 //const TokenContext = createContext('');
 
 const fetchFonts = () => {
@@ -23,14 +23,9 @@ export default function App() {
     const [token, setToken] = useState('');
 
     useEffect(() => {
-        fetch('http://192.168.50.139:8080/auth/token') //ska vara localhost här egentligen, men funkar inte
-            .then(response => response.text())
-            .then(newToken => {
-                setToken(newToken);
-                console.log('token:', token);
-            })
-            .catch(error => console.error(error));
+        Fetch.getNewTokenFromServer(setToken);
     }, []);
+
 
     if (!dataLoaded) {
         return (
