@@ -9,41 +9,43 @@ const GameListScreen = props => {
     const token = useContext(TokenContext);
     const game = useContext(GameContext);
 
+    return (
+        <View style={styles.screen}>
+            <BodyText>Kommer att komma en lista här</BodyText>
 
-    const fetchGamesFromServer = (token) => {
-        fetch('http://192.168.50.139/games', {
-            method: 'GET',
-            headers: {
-                token: token,
-                'Content-Type': 'application/json',
-            }
-        })
-    };
-
-
-    const [gameList, setGameList] = useState([]);
-
-    setGameList = fetchGamesFromServer();
-    const renderGameList = () => {
-
-        return (
-            <View style={styles.screen}>
-                <BodyText>Kommer att komma en lista här</BodyText>
-                {gameList}
-                <MainButton>Joina ett spel</MainButton>
-                <FlatList keyExtractor={(gameList, index) => gameList.id} data={gameList} renderItem={renderGameList}/>
-                {/* <FlatList keyExtractor={(listItem, index) => listItem.id} data={} renderItem={renderGameList} numColumns={2} /> */}
-            </View>
-        );
-    };
+            <MainButton>Joina ett spel</MainButton>
+            {/*<FlatList keyExtractor={(gameList, index) => gameList.id} data={gameList} renderItem={renderGameList}/>
+                 <FlatList keyExtractor={(listItem, index) => listItem.id} data={} renderItem={renderGameList} numColumns={2} /> */}
+        </View>
+    );
 };
 
-    const styles = StyleSheet.create({
-        screen: {
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-        },
-    });
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
 
-    export default GameListScreen;
+export default GameListScreen;
+
+/*
+/*    const fetchGamesFromServer = (token) => {
+    fetch('http://192.168.50.139/games', {
+        method: 'GET',
+        headers: {
+            token: token,
+            'Content-Type': 'application/json',
+        }
+    })
+
+{gameList}
+
+const [gameList, setGameList] = useState([]);
+
+setGameList = fetchGamesFromServer();
+const renderGameList = () => {};
+
+*/
+

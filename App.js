@@ -5,11 +5,12 @@ import AppLoading from 'expo-app-loading';
 import {} from 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 
+import LandingScreen from './screens/LandingScreen';
 import NavigationRPS from './navigation/NavigationRPS';
 import {TokenContext} from './context/TokenContext';
 import {GameContext} from './context/GameContext';
-import Fetch from "./fetch/Fetch";
-//const TokenContext = createContext('');
+import * as Fetch from "./fetch/Fetch";
+
 
 const fetchFonts = () => {
     return Font.loadAsync({
@@ -21,9 +22,10 @@ const fetchFonts = () => {
 export default function App() {
     const [dataLoaded, setDataLoaded] = useState(false);
     const [token, setToken] = useState('');
+    const [game, setGame] = useState(null);
 
     useEffect(() => {
-        Fetch.getNewTokenFromServer(setToken);
+        Fetch.getNewTokenFromServer(setToken)
     }, []);
 
 
@@ -39,9 +41,11 @@ export default function App() {
 
     return (
         <TokenContext.Provider value={token}>
-            <NavigationContainer>
-                <NavigationRPS/>
-            </NavigationContainer>
+            <GameContext.Provider value={game}>
+                <NavigationContainer>
+                    <NavigationRPS/>
+                </NavigationContainer>
+            </GameContext.Provider>
         </TokenContext.Provider>
     );
 }
