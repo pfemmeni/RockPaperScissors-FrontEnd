@@ -7,7 +7,7 @@ import {GameContext} from "../context/GameContext";
 
 const GameListScreen = props => {
     const token = useContext(TokenContext);
-    const game = useContext(GameContext);
+    const [game, setGame] = useContext(GameContext);
 
     return (
         <View style={styles.screen}>

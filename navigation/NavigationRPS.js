@@ -15,24 +15,25 @@ import WinnerScreen from '../screens/WinnerScreen';
 import LooseScreen from '../screens/LooseScreen';
 import DrawScreen from '../screens/DrawScreen';
 import Colors from '../constants/colors';
+import MoveOrLoadingScreen from "../screens/MoveOrLoadingScreen";
 
 const Stack = createStackNavigator();
 
 function NavigationRPS() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Landing" component={LandingScreen}/>
+            <Stack.Screen name="Welcome" component={LandingScreen}/>
             <Stack.Screen name="Home" component={HomeScreen}/>
+            <Stack.Screen name="MoveOrLoad" component={MoveOrLoadingScreen} />
             <Stack.Screen name="MakeMove" component={MakeMoveScreen}/>
             <Stack.Screen name="Loading" component={LoadingPage}/>
             <Stack.Screen name="Games" component={GameListScreen}/>
-            <Stack.Screen name="Winner" component={WinnerScreen} />
-            <Stack.Screen name="Lost" component={LooseScreen} />
-            <Stack.Screen name="Draw" component={DrawScreen}/>
         </Stack.Navigator>
 
     );
 }
+
+const Stack2 = createStackNavigator
 
 const Tab = createBottomTabNavigator();
 
@@ -73,3 +74,8 @@ export default NavigationTabRPS;
  /!*</NavigationContainer>*!/
   /!* <NavigationContainer >*!/
  */
+
+
+/*            <Stack.Screen name="Winner" component={WinnerScreen} />
+            <Stack.Screen name="Lost" component={LooseScreen} />
+            <Stack.Screen name="Draw" component={DrawScreen}/>*/

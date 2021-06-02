@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, StyleSheet, Text, useContext, createContext} from 'react-native';
+import React, {useState, useEffect, useContext, createContext} from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
@@ -10,16 +10,16 @@ import {GameContext} from '../context/GameContext';
 import * as Fetch from '../fetch/Fetch';
 
 
-const HomeScreen = (props, {navigation}) => {
+const HomeScreen = ({navigation}) => {
     const token = useContext(TokenContext);
-    //const game = useContext(GameContext);
-    const [game, setGame] = useState(null);
+    const [game, setGame] = useContext(GameContext);
 
 
-    const startNewGameAndNavigateHandler = ({navigation}) => {
+    const startNewGameAndNavigateHandler = () => {
         console.log('game start');
         Fetch.startGame(token, setGame)
-            .then(response => navigation.navigate('LoadingPage'));
+        // .then(response => navigation.navigate('Loading'));{navigation}
+        navigation.navigate("MoveOrLoad");
     };
 
     useEffect(() => {
@@ -34,41 +34,37 @@ const HomeScreen = (props, {navigation}) => {
     console.log("app game ", game)
 
     return (
-        <GameContext.Provider value={game}>
-            <View style={styles.screen}>
-                <TitleText>GAME RULES</TitleText>
-                <View style={styles.textContainer}>
-                    <BodyText style={styles.bodyText}>
-                        In the Game you will choose one of the following symbols:
-                    </BodyText>
-                    <BodyText>ROCK - SCISSORS - PAPER</BodyText>
-                    <BodyText/>
-                    <BodyText style={styles.bodyText}>The Winner will be:</BodyText>
-                    <BodyText> ROCK wins over SCISSORS</BodyText>
-                    <BodyText style={styles.bodyText}>SCISSORS wins over PAPER</BodyText>
-                    <BodyText style={styles.bodyText}> PAPER wins over ROCK</BodyText>
-                    <BodyText>In case of the same symbol it's a Draw</BodyText>
-                    <BodyText/>
-                    <BodyText style={styles.bodyText}>GOOD LUCK!</BodyText>
-                </View>
-                <MainButton style={styles.buttons} onClick={startNewGameAndNavigateHandler}>
-                    START NEW GAME
-                </MainButton>
-                <Text style={styles.buttons}>
-                    ---------------------- OR ----------------------
-                </Text>
-                {/*<View style={styles.line}></View>*/}
-                <MainButton
-                    onPress={() => {
-                        props.navigation.navigate('Games');
-                    }}
-                    style={styles.buttons}
-                >
-                    JOIN OPEN GAME
-                </MainButton>
-                {/*<MenuButtons style={styles.menuButtons}></MenuButtons>*/}
+        <View style={styles.screen}>
+            <TitleText>GAME RULES</TitleText>
+            <View style={styles.textContainer}>
+                <BodyText style={styles.bodyText}>
+                    In the Game you will choose one of the following symbols:
+                </BodyText>
+                <BodyText>ROCK - SCISSORS - PAPER</BodyText>
+                <BodyText/>
+                <BodyText style={styles.bodyText}>The Winner will be:</BodyText>
+                <BodyText> ROCK wins over SCISSORS</BodyText>
+                <BodyText style={styles.bodyText}>SCISSORS wins over PAPER</BodyText>
+                <BodyText style={styles.bodyText}> PAPER wins over ROCK</BodyText>
+                <BodyText>In case of the same symbol it's a Draw</BodyText>
+                <BodyText/>
+                <BodyText style={styles.bodyText}>GOOD LUCK!</BodyText>
             </View>
-        </GameContext.Provider>
+            <MainButton style={styles.buttons} onPress={startNewGameAndNavigateHandler}>
+                START NEW GAME
+            </MainButton>
+            <Text style={styles.buttons}>
+                ---------------------- OR ----------------------
+            </Text>
+            <MainButton
+                onPress={() => {
+                    navigation.navigate('Games')
+                }}
+                style={styles.buttons}
+            >
+                JOIN OPEN GAME
+            </MainButton>
+        </View>
     );
 };
 const styles = StyleSheet.create({
@@ -107,3 +103,7 @@ export default HomeScreen;
 /*
 <TitleText>Hi {props.playerName}</TitleText>
  */
+{/*<View style={styles.line}></View>*/
+}
+{/*<MenuButtons style={styles.menuButtons}></MenuButtons>*/
+}

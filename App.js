@@ -41,7 +41,7 @@ export default function App() {
 
     return (
         <TokenContext.Provider value={token}>
-            <GameContext.Provider value={game}>
+            <GameContext.Provider value={[game, setGame]}>
                 <NavigationContainer>
                     <NavigationRPS/>
                 </NavigationContainer>

@@ -1,30 +1,16 @@
-export const getNewTokenFromServer = (setTokenId) => {
+export const getNewTokenFromServer = (setToken) => {
     fetch("http://10.0.2.2:8080/auth/token")
         .then(res => res.text())
-        .then(setTokenId)
+        .then(setToken)
 }
 
-export const startGame = (tokenId, setGame) => {
-    fetch("http://10.0.2.2:8080/games/start",
-        {
-            method: "GET",
-            headers: {
-                Accept: "*/*",
-                "token": tokenId
-            }
-        })
-        .then(res => res.json())
-        .then(json => setGame(json))
-        .catch(error => console.error(error))
-}
-
-export const storeNameInServer = (tokenId, name) => {
+export const storeNameInServer = (token, name) => {
     fetch("http://10.0.2.2:8080/user/name",
         {
             method: "POST",
             headers: {
                 Accept: "*/*",
-                "token": tokenId,
+                "token": token,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -33,13 +19,28 @@ export const storeNameInServer = (tokenId, name) => {
         })
 }
 
-export const getGameStatus = (tokenId, setGame) => {
+export const startGame = (token, setGame) => {
+    fetch("http://10.0.2.2:8080/games/start",
+        {
+            method: "GET",
+            headers: {
+                Accept: "*/*",
+                "token": token
+            }
+        })
+        .then(res => res.json())
+        .then(json => setGame(json))
+        .catch(error => console.error(error))
+}
+
+
+export const getGameStatus = (token, setGame) => {
     fetch("http://10.0.2.2:8080/games/status",
         {
             method: "GET",
             headers: {
                 Accept: "*/*",
-                "token": tokenId
+                "token": token
             }
         })
         .then(res => res.json())

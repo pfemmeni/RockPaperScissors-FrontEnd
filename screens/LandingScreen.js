@@ -19,89 +19,81 @@ import {TokenContext} from '../context/TokenContext';
 import {GameContext} from '../context/GameContext';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import * as Fetch from '../fetch/Fetch';
+import * as fetch from '../fetch/Fetch';
+import {storeNameInServer} from "../fetch/Fetch";
 
+const LandingScreen = ({navigation}) => {
+    const token = useContext(TokenContext);
+    const [playerName, setPlayerName] = useState('');
 
-const LandingScreen = () => {
-        const token = useContext(TokenContext);
-        const [playerName, setPlayerName] = useState('');
-
-
-        const sendPlayerNameToServerAndNavigateToHome = ({navigation}) => {
-            if (!playerName) {
-                return;
-            }
-            Fetch.storeNameInServer(token, playerName);
-                //.then(response => navigation.navigate('Home')); //, playerName för att skicka vidare?
-            props.navigation.navigate('Home');
+    const sendPlayerNameToServer = () => {
+        if (!playerName) {
+            return;
         }
-
-        return (
-            <TokenContext.Provider value={token}>
-                <ScrollView>
-                    <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
-                        <TouchableWithoutFeedback
-                            onPress={() => {
-                                Keyboard.dismiss();
-                            }}
-                        >
-                            <View style={styles.screen}>
-                                <View style={styles.imageContainer}>
-                                    <Image
-                                        source={require('../assets/RPS.jpg')}
-                                        style={styles.image}
-                                    />
-                                </View>
-                                <TitleText>WELCOME</TitleText>
-                                <View style={styles.text}>
-                                    <BodyText style={styles.bodyText}>
-                                        This is the worst game ever with the ugliest design made by
-                                        Agnes and Caroline.
-                                    </BodyText>
-                                    <BodyText></BodyText>
-                                    <BodyText style={styles.bodyText}>
-                                        This is a game, and this game may be fun, it's up to you to find
-                                        that out. When you press "start play" you will find the rules of
-                                        the game.{' '}
-                                    </BodyText>
-                                    <BodyText>And remember to have lots of fun.</BodyText>
-                                    <BodyText>{token}</BodyText>
-                                    <BodyText>{playerName}</BodyText>
-                                </View>
-                                {/* <View style={styles.inputButtonContainer}> */}
-                                <TextInput
-                                    style={styles.textInput}
-                                    placeholder="Enter your name here"
-                                    blurOnSubmit
-                                    autoCapitalize="none"
-                                    autoCorrect={false}
-                                    value={playerName}
-                                    onChangeText={text => setPlayerName(text)}
-                                />
-
-                                {/* <MainButton onPress={onStartPlayAndGoToHomeScreenHandler} value={enteredNameValue}> */}
-                                <MainButton onPress={() => sendPlayerNameToServerAndNavigateToHome}>
-                                    START PLAY
-                                </MainButton>
-                                {/*        <MainButton
-              onPress={() => {
-                props.navigation.replace('Home');
-              }}
-            >
-              START PLAY
-            </MainButton>*/}
-                                {/*replace för att man inte skall komma tillbaka till den sidan igen, annars navigate*/}
-                            </View>
-                        </TouchableWithoutFeedback>
-                    </KeyboardAvoidingView>
-                </ScrollView>
-            </TokenContext.Provider>
-        );
+        fetch.storeNameInServer(token, playerName)
+        //.catch(error => console.error(error));
     }
-;
+
+    const navigateToHomeScreen = () => {
+        sendPlayerNameToServer();
+        navigation.navigate("Home");
+    }
+
+
+    return (
+        <ScrollView>
+            <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
+                <TouchableWithoutFeedback
+                    onPress={() => {
+                        Keyboard.dismiss();
+                    }}
+                >
+                    <View style={styles.screen}>
+                        <View style={styles.imageContainer}>
+                            <Image
+                                source={require('../assets/RPS.jpg')}
+                                style={styles.image}
+                            />
+                        </View>
+                        <TitleText>WELCOME</TitleText>
+                        <View style={styles.text}>
+                            <BodyText style={styles.bodyText}>
+                                This is the worst game ever with the ugliest design made by
+                                Agnes and Caroline.
+                            </BodyText>
+                            <BodyText></BodyText>
+                            <BodyText style={styles.bodyText}>
+                                This is a game, and this game may be fun, it's up to you to
+                                find that out. When you press "start play" you will find the
+                                rules of the game.{' '}
+                            </BodyText>
+                            <BodyText>And remember to have lots of fun.</BodyText>
+                            <BodyText>{token}</BodyText>
+                            <BodyText>{playerName}</BodyText>
+                        </View>
+                        <TextInput
+                            style={styles.textInput}
+                            placeholder="Enter your name here"
+                            blurOnSubmit
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            value={playerName}
+                            onChangeText={text => setPlayerName(text)}
+                        />
+                        <MainButton
+                            onPress={() => navigateToHomeScreen()}
+                        >
+                            START PLAY
+                        </MainButton>
+                    </View>
+                </TouchableWithoutFeedback>
+            </KeyboardAvoidingView>
+        </ScrollView>
+    );
+};
 
 LandingScreen.navigationOptions = {
-    headerTitle: 'Welcome',
+    headerTitle: '',
 };
 
 const styles = StyleSheet.create({
@@ -145,3 +137,21 @@ const styles = StyleSheet.create({
 });
 
 export default LandingScreen;
+
+
+/*
+      <MainButton
+              onPress={() => {
+                props.navigation.replace('Home');
+              }}
+            >
+              START PLAY
+            </MainButton>
+replace för att man inte skall komma tillbaka till den sidan igen, annars navigate
+ */
+//setPlayerName('Anonym')
+//navigation.navigate('Home');
+{/* <MainButton onPress={onStartPlayAndGoToHomeScreenHandler} value={enteredNameValue}> */
+}
+{/* <View style={styles.inputButtonContainer}> */
+}

@@ -9,7 +9,7 @@ import TitleText from '../components/TitleText';
 import Colors from '../constants/colors';
 import {FontAwesome} from "@expo/vector-icons";
 
-const LooseScreen = props => {
+const LooseScreen = ({navigation}) => {
   return (
     <View style={styles.screen}>
       <TitleText>BETTER LUCK NEXT TIME</TitleText>
@@ -23,7 +23,7 @@ const LooseScreen = props => {
       <View style={styles.buttonContainer}>
         <MainButton
           onPress={() => {
-            props.navigation.navigate('Home');
+            navigation.navigate('Home');
           }}
           style={styles.button}
         >
