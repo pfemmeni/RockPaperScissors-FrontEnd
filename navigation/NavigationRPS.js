@@ -1,9 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, Platform} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
+
 import {FontAwesome} from "@expo/vector-icons";
 
 import LandingScreen from '../screens/LandingScreen';
@@ -28,12 +26,27 @@ function NavigationRPS() {
             <Stack.Screen name="MakeMove" component={MakeMoveScreen}/>
             <Stack.Screen name="Loading" component={LoadingPage}/>
             <Stack.Screen name="Games" component={GameListScreen}/>
+            <Stack.Screen name="Win" component={WinnerScreen}/>
+            <Stack.Screen name="Loose" component={LooseScreen}/>
+            <Stack.Screen name="Draw" component={DrawScreen}/>
         </Stack.Navigator>
 
     );
 }
 
-const Stack2 = createStackNavigator
+const Stack2 = createStackNavigator();
+
+function MakeMoveLooseWinDraw() {
+    return (
+        <Stack2.Navigator>
+            <Stack2.Screen name="MoveOrLoad" component={MoveOrLoadingScreen} />
+            <Stack2.Screen name="Loading" component={LoadingPage}/>
+            <Stack2.Screen name="MakeMove" component={MakeMoveScreen}/>
+            <Stack2.Screen name="Win" component={WinnerScreen}/>
+            <Stack2.Screen name="Loose" component={LooseScreen}/>
+            <Stack2.Screen name="Draw" component={DrawScreen}/>
+        </Stack2.Navigator>);
+}
 
 const Tab = createBottomTabNavigator();
 
@@ -59,7 +72,7 @@ function NavigationTabRPS() {
         })}
                        tabBarOptions={{activeTintColor: Colors.primaryColor, inactiveTintColor: Colors.greyish}}>
             <Tab.Screen name="Home" component={NavigationRPS}/>
-            <Tab.Screen name="Game" component={MakeMoveScreen}/>
+            <Tab.Screen name="Game" component={MakeMoveLooseWinDraw}/>
             <Tab.Screen name="Games" component={GameListScreen}/>
         </Tab.Navigator>
     );
@@ -68,7 +81,7 @@ function NavigationTabRPS() {
 export default NavigationTabRPS;
 
 
-//tabBarVisible={false}
+//tabBarVisible={false}MakeMoveScreen
 //<Tab.Screen name="Home" component={NavigationRPS}/>
 /*
  /!*</NavigationContainer>*!/

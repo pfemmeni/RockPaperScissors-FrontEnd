@@ -1,17 +1,10 @@
-import React, {useState, useEffect, useContext, createContext} from 'react';
-import {View, StyleSheet, Image, Dimensions, Text} from 'react-native';
-import BodyText from '../components/BodyText';
-import {FontAwesome} from '@expo/vector-icons';
-import {NavigationContainer} from '@react-navigation/native';
+import React, { useContext} from 'react';
+import {View, StyleSheet} from 'react-native';
 
-import TitleText from '../components/TitleText';
-import {TokenContext} from '../context/TokenContext';
+import {TokenContext} from "../context/TokenContext";
 import {GameContext} from '../context/GameContext';
 import Colors from '../constants/colors';
-import Scissors from '../components/Scissors';
-import Paper from '../components/Paper';
-import Rock from '../components/Rock';
-import MainButton from '../components/MainButton';
+
 import LoadingPage from './LoadingPage';
 import MakeMoveScreen from './MakeMoveScreen';
 import * as Fetch from "../fetch/Fetch";
@@ -20,17 +13,26 @@ const MoveOrLoadingScreen = () => {
     const token = useContext(TokenContext);
     const [game, setGame] = useContext(GameContext);
 
+/*    Fetch.getGameStatus(token, setGame);
+
     if (!game) {
         return null;
-    }
+    }*/
 
     return (
-        <View>
+        <View style={styles.screen}>
             {game.game === "OPEN" && <LoadingPage/>}
             {game.game === "ACTIVE" && <MakeMoveScreen/>}
         </View>
     );
 };
 
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        backgroundColor: Colors.background,
+        justifyContent: 'flex-start'
+    },
+});
 
 export default MoveOrLoadingScreen;

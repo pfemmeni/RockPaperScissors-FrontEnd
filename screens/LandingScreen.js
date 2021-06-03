@@ -55,7 +55,9 @@ const LandingScreen = ({navigation}) => {
                                 style={styles.image}
                             />
                         </View>
-                        <TitleText>WELCOME</TitleText>
+                            <BodyText>Token: {token}</BodyText>
+                            <BodyText>Player: {playerName}</BodyText>
+                        {/*<TitleText>WELCOME</TitleText>*/}
                         <View style={styles.text}>
                             <BodyText style={styles.bodyText}>
                                 This is the worst game ever with the ugliest design made by
@@ -68,8 +70,6 @@ const LandingScreen = ({navigation}) => {
                                 rules of the game.{' '}
                             </BodyText>
                             <BodyText>And remember to have lots of fun.</BodyText>
-                            <BodyText>{token}</BodyText>
-                            <BodyText>{playerName}</BodyText>
                         </View>
                         <TextInput
                             style={styles.textInput}

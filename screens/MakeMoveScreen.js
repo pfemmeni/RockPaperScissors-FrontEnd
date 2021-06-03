@@ -36,45 +36,43 @@ const MakeMoveScreen = ({navigation}) => {
         );
     }
 
-    const scissorsPressedHandler = () => {
+    const scissorsPressedHandler = ({navigation}) => {
         setMadeMove(true);
         console.log('pressed Scissors');
         navigation.navigate('Winner');
     };
-    const rockPressedHandler = () => {
+    const rockPressedHandler = ({navigation}) => {
         setMadeMove(true);
         console.log('pressed Rock');
         //navigation.navigate('Lost');
-        <LooseScreen />
+       return <LooseScreen/>
     };
-    const paperPressedHandler = () => {
+    const paperPressedHandler = ({navigation}) => {
         setMadeMove(true);
         console.log('pressed Paper');
         navigation.navigate('Draw');
     };
 
-    return (
-                <View style={styles.screen}>
-                    <Image/>
-                    <View style={styles.textContainer}>
-                        <TitleText>YOUR OPPONENT</TitleText>
-                        <TitleText>{game.opponentName}</TitleText>
-                        <TitleText>ENTERED THE GAME</TitleText>
-                    </View>
-                    <View style={styles.makeMoveText}>
-                        <BodyText style={styles.moveText}>IT'S TIME TO MAKE YOUR MOVE</BodyText>
-                        <BodyText>To make your move press on sign image</BodyText>
-                    </View>
-                    <View style={styles.iconContainer}>
-                        <Scissors onPress={scissorsPressedHandler}/>
-                    </View>
-                    <View style={styles.iconContainer}>
-                        <Paper onPress={paperPressedHandler}/>
-                        <Rock onPress={rockPressedHandler}/>
-                    </View>
-                    {playAgainButton}
-                </View>
-
+    return (<View style={styles.screen}>
+            <Image/>
+            <View style={styles.textContainer}>
+                <TitleText>YOUR OPPONENT</TitleText>
+                <TitleText>{game.opponentName}</TitleText>
+                <TitleText>ENTERED THE GAME</TitleText>
+            </View>
+            <View style={styles.makeMoveText}>
+                <BodyText style={styles.moveText}>IT'S TIME TO MAKE YOUR MOVE</BodyText>
+                <BodyText>To make your move press on sign image</BodyText>
+            </View>
+            <View style={styles.iconContainer}>
+                <Scissors onPress={scissorsPressedHandler}/>
+            </View>
+            <View style={styles.iconContainer}>
+                <Paper onPress={paperPressedHandler}/>
+                <Rock onPress={rockPressedHandler}/>
+            </View>
+            {playAgainButton}
+        </View>
     );
 };
 
