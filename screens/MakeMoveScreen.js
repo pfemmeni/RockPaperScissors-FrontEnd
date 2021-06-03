@@ -32,7 +32,7 @@ const MakeMoveScreen = ({navigation}) => {
                 <View style={styles.screen}>
                     <View style={styles.textContainer}>
                         <TitleText>YOUR OPPONENT</TitleText>
-                        <TitleText style={{color: "red"}}>{game.opponentName.toUpperCase()}</TitleText>
+                        <TitleText >{game.opponentName}</TitleText>
                         <TitleText>ENTERED THE GAME</TitleText>
                     </View>
                     <View style={styles.makeMoveText}>
@@ -40,11 +40,11 @@ const MakeMoveScreen = ({navigation}) => {
                         <BodyText>To make your move press on sign image</BodyText>
                     </View>
                     <View style={styles.iconContainer}>
-                        <Scissors onPress={movePressedHandler("SCISSORS")}/>
+                        <Scissors onPress={() => movePressedHandler("SCISSORS")}/>
                     </View>
                     <View style={styles.iconContainer}>
-                        <Paper onPress={movePressedHandler("PAPER")}/>
-                        <Rock onPress={movePressedHandler("ROCK")}/>
+                        <Paper onPress={() => movePressedHandler("PAPER")}/>
+                        <Rock onPress={() => movePressedHandler("ROCK")}/>
                     </View>
                 </View>
                 }

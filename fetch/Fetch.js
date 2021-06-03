@@ -75,7 +75,7 @@ export const getGameStatusFromServer = (token, setGame, onError) => {
 }*/
 
 export const sendChosenMoveToServer = (move, token, setGame) => {
-    fetch('http://10.0.2.2:8080/games/move/${move}', {
+    fetch(`http://10.0.2.2:8080/games/move/${move}`, {
         method: "GET",
         headers: {
             Accept: "*/*",

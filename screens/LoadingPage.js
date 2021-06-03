@@ -10,12 +10,17 @@ import {GameContext} from "../context/GameContext";
 
 const LoadingPage = ({navigation}) => {
     const [game, setGame] = useContext(GameContext);
-    return (
+    let waitingForJoinOrMakeMove = game.game ==="OPEN" ? "JOIN THE GAME" : "MAKE A MOVE"
+
+return (
         <View style={styles.screen}>
             <TitleText>HI THERE {game.name}</TitleText>
             <TitleText>WAITING FOR AN OPPONENT TO</TitleText>
-            <Text>{game.game ==="OPEN" ? "JOIN THE GAME" : "MAKE A MOVE"}</Text>
-            <ActivityIndicator size="large" color="#00ff00" />
+            <Text>"JOIN THE GAME"</Text>
+            <View>
+                <ActivityIndicator size="large" color="#00ff00" />
+            </View>
+
 
         </View>
     );
