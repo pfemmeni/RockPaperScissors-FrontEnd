@@ -1,7 +1,9 @@
 import React from 'react';
+import {View, Text, StyleSheet, Platform} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
+import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import {FontAwesome} from "@expo/vector-icons";
 
 import LandingScreen from '../screens/LandingScreen';
@@ -48,6 +50,7 @@ function MakeMoveLooseWinDraw() {
         </Stack2.Navigator>);
 }
 
+
 const Tab = createBottomTabNavigator();
 
 function NavigationTabRPS() {
@@ -72,7 +75,7 @@ function NavigationTabRPS() {
         })}
                        tabBarOptions={{activeTintColor: Colors.primaryColor, inactiveTintColor: Colors.greyish}}>
             <Tab.Screen name="Home" component={NavigationRPS}/>
-            <Tab.Screen name="Game" component={MakeMoveLooseWinDraw}/>
+            <Tab.Screen name="Game" component={MakeMoveScreen}/>
             <Tab.Screen name="Games" component={GameListScreen}/>
         </Tab.Navigator>
     );
@@ -81,7 +84,7 @@ function NavigationTabRPS() {
 export default NavigationTabRPS;
 
 
-//tabBarVisible={false}MakeMoveScreen
+//tabBarVisible={false}
 //<Tab.Screen name="Home" component={NavigationRPS}/>
 /*
  /!*</NavigationContainer>*!/
