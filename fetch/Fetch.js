@@ -50,6 +50,6 @@ export const getGameStatus = (token, setGame, onError) => {
             if(onError){
                 onError(error)
             }
-            }
+        }
         )
 }

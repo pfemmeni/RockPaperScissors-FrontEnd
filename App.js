@@ -10,7 +10,6 @@ import {GameContext} from './context/GameContext';
 import * as Fetch from "./fetch/Fetch";
 
 
-
 const fetchFonts = () => {
     return Font.loadAsync({
         'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -24,29 +23,33 @@ export default function App() {
     const [game, setGame] = useState(null);
 
     useEffect(() => {
-        console.log("Fetching new token", token, game)
+        console.log("Fetching new token --------------------------------", token, game)
         Fetch.getNewTokenFromServer(setToken)
     }, []);
 
     useEffect(() => {
         setInterval(() => {
-            console.log("interval__________--", game)
-            if (!!game) {
+            console.log("interval --------------------------------", token, game)
+            if (game) {
+                console.log("if satsen -------------------------------")
                 Fetch.getGameStatus(token, game => {
-                    if(game.error){
-                        console.log("app useEffect Error", game)
+                    if (game.error) {
+                        console.log("app useEffect Error", game.error)
                         setGame(null)
                         return
                     }
-                    console.log("app useEffect", token, game)
+                    console.log("app useEffect --------------------------------", token, game)
                     setGame(game)
-                }, error=> setGame(null))
+                }, error => {
+                    console.log("error --------------------------------")
+                    setGame(null)
+                })
             }
 
-        }, 3000)
+        }, 5000)
 
-    }, [])
-    console.log("app ", token, game)
+    }, [token, game, setGame])
+    // console.log("app ", token, game)
 
     if (!dataLoaded) {
         return (

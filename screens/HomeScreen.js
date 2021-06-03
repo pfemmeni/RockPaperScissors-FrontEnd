@@ -16,8 +16,9 @@ const HomeScreen = ({navigation}) => {
 
 
     const startNewGameAndNavigateHandler = () => {
-        console.log('game start');
+
         Fetch.startGame(token, setGame)
+        console.log('game start------------------------', game);
         // .then(response => navigation.navigate('Loading'));{navigation}
         navigation.navigate("MoveOrLoad");
     };
