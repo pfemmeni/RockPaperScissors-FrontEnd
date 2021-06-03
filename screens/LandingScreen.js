@@ -1,4 +1,4 @@
-import React, {useState, useEffect, createContext, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {
     View,
     StyleSheet,
@@ -13,14 +13,10 @@ import {
 
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
-import TitleText from '../components/TitleText';
 import Colors from '../constants/colors';
 import {TokenContext} from '../context/TokenContext';
-import {GameContext} from '../context/GameContext';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import * as fetch from '../fetch/Fetch';
-import {storeNameInServer} from "../fetch/Fetch";
+
 
 const LandingScreen = ({navigation}) => {
     const token = useContext(TokenContext);
@@ -31,7 +27,6 @@ const LandingScreen = ({navigation}) => {
             return;
         }
         fetch.storeNameInServer(token, playerName)
-        //.catch(error => console.error(error));
     }
 
     const navigateToHomeScreen = () => {
@@ -89,7 +84,7 @@ const LandingScreen = ({navigation}) => {
 };
 
 LandingScreen.navigationOptions = {
-    headerTitle: '',
+    headerTitle: 'Welcome',
 };
 
 const styles = StyleSheet.create({
@@ -144,10 +139,8 @@ export default LandingScreen;
               START PLAY
             </MainButton>
 replace för att man inte skall komma tillbaka till den sidan igen, annars navigate
- */
+
 //setPlayerName('Anonym')
 //navigation.navigate('Home');
-{/* <MainButton onPress={onStartPlayAndGoToHomeScreenHandler} value={enteredNameValue}> */
-}
-{/* <View style={styles.inputButtonContainer}> */
-}
+ <MainButton onPress={onStartPlayAndGoToHomeScreenHandler} value={enteredNameValue}>
+ <View style={styles.inputButtonContainer}>*/
