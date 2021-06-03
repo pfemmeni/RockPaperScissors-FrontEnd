@@ -32,7 +32,7 @@ export default function App() {
             console.log("interval --------------------------------", token, game)
             if (game) {
                 console.log("if satsen -------------------------------")
-                Fetch.getGameStatus(token, game => {
+                Fetch.getGameStatusFromServer(token, game => {
                     if (game.error) {
                         console.log("app useEffect Error", game.error)
                         setGame(null)
@@ -46,7 +46,7 @@ export default function App() {
                 })
             }
 
-        }, 5000)
+        }, 10000)
 
     }, [token, game, setGame])
     // console.log("app ", token, game)

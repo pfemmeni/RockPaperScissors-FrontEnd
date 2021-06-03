@@ -11,18 +11,19 @@ import {GameContext} from "../context/GameContext";
 import * as Fetch from "../fetch/Fetch";
 
 const LoadingPage = ({navigation}) => {
-  const token = useContext(TokenContext);
-  /*  const game = useContext(GameContext);
+    const token = useContext(TokenContext);
+    const game = useContext(GameContext);
 
-   Fetch.getGameStatus(token, game);*/
-
+    if (game.game === "ACTIVE") {
+        navigation.navigate("MakeMove")
+    }
     return (
         <View style={styles.screen}>
-            <TitleText>HI THERE {token.name}</TitleText>
+            <TitleText>HI THERE {game.name}</TitleText>
             <TitleText>WAITING FOR AN OPPONENT TO</TitleText>
             <TitleText>JOIN THE GAME</TitleText>
-            {/*<MainButton onPress={Fetch.getGameStatus}>getGameStatus</MainButton>*/}
-            <Loading />
+            <Loading/>
+
         </View>
     );
 };

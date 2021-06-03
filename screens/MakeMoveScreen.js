@@ -36,7 +36,8 @@ const MakeMoveScreen = ({navigation}) => {
         );
     }
 
-    const scissorsPressedHandler = ({navigation}) => {
+    const movePressedHandler = (props) => {
+        Fetch.sendChosenMoveToServer(props)
         setMadeMove(true);
         console.log('pressed Scissors');
         navigation.navigate('Winner');
@@ -45,7 +46,7 @@ const MakeMoveScreen = ({navigation}) => {
         setMadeMove(true);
         console.log('pressed Rock');
         //navigation.navigate('Lost');
-       return <LooseScreen/>
+        return <LooseScreen/>
     };
     const paperPressedHandler = ({navigation}) => {
         setMadeMove(true);
@@ -53,7 +54,8 @@ const MakeMoveScreen = ({navigation}) => {
         navigation.navigate('Draw');
     };
 
-    return (<View style={styles.screen}>
+    return (
+        <View style={styles.screen}>
             <Image/>
             <View style={styles.textContainer}>
                 <TitleText>YOUR OPPONENT</TitleText>
@@ -65,7 +67,7 @@ const MakeMoveScreen = ({navigation}) => {
                 <BodyText>To make your move press on sign image</BodyText>
             </View>
             <View style={styles.iconContainer}>
-                <Scissors onPress={scissorsPressedHandler}/>
+                <Scissors onPress={movePressedHandler("SCISSORS")}/>
             </View>
             <View style={styles.iconContainer}>
                 <Paper onPress={paperPressedHandler}/>

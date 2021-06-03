@@ -9,7 +9,7 @@ import LoadingPage from './LoadingPage';
 import MakeMoveScreen from './MakeMoveScreen';
 import * as Fetch from "../fetch/Fetch";
 
-const MoveOrLoadingScreen = () => {
+const MoveOrLoadingScreen = ({navigation}) => {
     const token = useContext(TokenContext);
     const [game, setGame] = useContext(GameContext);
 
@@ -21,8 +21,8 @@ const MoveOrLoadingScreen = () => {
 
     return (
         <View style={styles.screen}>
-            {game.game === "OPEN" && <LoadingPage/>}
-            {game.game === "ACTIVE" && <MakeMoveScreen/>}
+            {game.game === "OPEN" && navigation.navigate("Loading")}
+            {game.game === "ACTIVE" && navigation.navigate("MakeMove")}
         </View>
     );
 };

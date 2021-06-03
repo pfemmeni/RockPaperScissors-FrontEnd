@@ -34,7 +34,7 @@ export const startGame = (token, setGame) => {
 }
 
 
-export const getGameStatus = (token, setGame, onError) => {
+export const getGameStatusFromServer = (token, setGame, onError) => {
     fetch("http://10.0.2.2:8080/games/status",
         {
             method: "GET",
