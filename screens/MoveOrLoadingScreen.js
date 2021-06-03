@@ -21,8 +21,8 @@ const MoveOrLoadingScreen = ({navigation}) => {
 
     return (
         <View style={styles.screen}>
-            {game.game === "OPEN" && navigation.navigate("Loading")}
-            {game.game === "ACTIVE" && navigation.navigate("MakeMove")}
+            {game.game === "OPEN" && <LoadingPage/>}
+            {game.game === "ACTIVE" && <MakeMoveScreen/>}
         </View>
     );
 };

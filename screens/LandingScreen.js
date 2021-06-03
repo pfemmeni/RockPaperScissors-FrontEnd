@@ -55,9 +55,6 @@ const LandingScreen = ({navigation}) => {
                                 style={styles.image}
                             />
                         </View>
-                            <BodyText>Token: {token}</BodyText>
-                            <BodyText>Player: {playerName}</BodyText>
-                        {/*<TitleText>WELCOME</TitleText>*/}
                         <View style={styles.text}>
                             <BodyText style={styles.bodyText}>
                                 This is the worst game ever with the ugliest design made by
@@ -81,8 +78,7 @@ const LandingScreen = ({navigation}) => {
                             onChangeText={text => setPlayerName(text)}
                         />
                         <MainButton
-                            onPress={() => navigateToHomeScreen()}
-                        >
+                            onPress={() => navigateToHomeScreen()}>
                             START PLAY
                         </MainButton>
                     </View>

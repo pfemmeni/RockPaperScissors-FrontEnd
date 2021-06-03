@@ -1,82 +1,58 @@
 import React, {useState, useContext, createContext} from 'react';
 import {View, StyleSheet, Image, Dimensions, Text} from 'react-native';
 import BodyText from '../components/BodyText';
-import {FontAwesome} from '@expo/vector-icons';
-import {NavigationContainer} from '@react-navigation/native';
 import TitleText from '../components/TitleText';
-import LooseScreen from './LooseScreen';
-
 import Colors from '../constants/colors';
 import Scissors from '../components/Scissors';
 import Paper from '../components/Paper';
 import Rock from '../components/Rock';
-import MainButton from '../components/MainButton';
 import {TokenContext} from '../context/TokenContext';
 import {GameContext} from '../context/GameContext';
+import LoadingPage from "./LoadingPage";
+import * as Fetch from "../fetch/Fetch";
 
 const MakeMoveScreen = ({navigation}) => {
-    const [madeMove, setMadeMove] = useState(false);
-    const [game, setGame] = useContext(GameContext);
-    const token = useContext(TokenContext);
+        const [madeMove, setMadeMove] = useState(false);
+        const [game, setGame] = useContext(GameContext);
+        const token = useContext(TokenContext);
 
 
-    let playAgainButton;
-    if (madeMove) {
-        playAgainButton = (
-            <View style={styles.buttonContainer}>
-                <MainButton
-                    onPress={() => {
-                        navigation.navigate('Home');
-                    }}
-                    style={styles.button}
-                >
-                    PLAY AGAIN
-                </MainButton>
+        const movePressedHandler = (move) => {
+            Fetch.sendChosenMoveToServer(move, token,setGame)
+            navigation.navigate("Loading");
+        };
+
+        if (!game) {
+            return null;
+        }
+        return (
+            <View style={styles.screen}>
+                {game.game === "OPEN" && <LoadingPage/>}
+                {game.game === "ACTIVE" &&
+                <View style={styles.screen}>
+                    <View style={styles.textContainer}>
+                        <TitleText>YOUR OPPONENT</TitleText>
+                        <TitleText style={{color: "red"}}>{game.opponentName.toUpperCase()}</TitleText>
+                        <TitleText>ENTERED THE GAME</TitleText>
+                    </View>
+                    <View style={styles.makeMoveText}>
+                        <BodyText style={styles.moveText}>IT'S TIME TO MAKE YOUR MOVE</BodyText>
+                        <BodyText>To make your move press on sign image</BodyText>
+                    </View>
+                    <View style={styles.iconContainer}>
+                        <Scissors onPress={movePressedHandler("SCISSORS")}/>
+                    </View>
+                    <View style={styles.iconContainer}>
+                        <Paper onPress={movePressedHandler("PAPER")}/>
+                        <Rock onPress={movePressedHandler("ROCK")}/>
+                    </View>
+                </View>
+                }
             </View>
-        );
+        )
+
     }
 
-    const movePressedHandler = (props) => {
-        Fetch.sendChosenMoveToServer(props)
-        setMadeMove(true);
-        console.log('pressed Scissors');
-        navigation.navigate('Winner');
-    };
-    const rockPressedHandler = ({navigation}) => {
-        setMadeMove(true);
-        console.log('pressed Rock');
-        //navigation.navigate('Lost');
-        return <LooseScreen/>
-    };
-    const paperPressedHandler = ({navigation}) => {
-        setMadeMove(true);
-        console.log('pressed Paper');
-        navigation.navigate('Draw');
-    };
-
-    return (
-        <View style={styles.screen}>
-            <Image/>
-            <View style={styles.textContainer}>
-                <TitleText>YOUR OPPONENT</TitleText>
-                <TitleText>{game.opponentName}</TitleText>
-                <TitleText>ENTERED THE GAME</TitleText>
-            </View>
-            <View style={styles.makeMoveText}>
-                <BodyText style={styles.moveText}>IT'S TIME TO MAKE YOUR MOVE</BodyText>
-                <BodyText>To make your move press on sign image</BodyText>
-            </View>
-            <View style={styles.iconContainer}>
-                <Scissors onPress={movePressedHandler("SCISSORS")}/>
-            </View>
-            <View style={styles.iconContainer}>
-                <Paper onPress={paperPressedHandler}/>
-                <Rock onPress={rockPressedHandler}/>
-            </View>
-            {playAgainButton}
-        </View>
-    );
-};
 
 const styles = StyleSheet.create({
     screen: {

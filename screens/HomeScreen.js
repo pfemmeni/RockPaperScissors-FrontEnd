@@ -20,7 +20,7 @@ const HomeScreen = ({navigation}) => {
         Fetch.startGame(token, setGame)
         console.log('game start------------------------', game);
         // .then(response => navigation.navigate('Loading'));{navigation}
-        navigation.navigate("Loading");
+        navigation.navigate("MakeMove");
     };
 
 
