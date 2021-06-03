@@ -1,21 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet, Platform} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import {FontAwesome} from "@expo/vector-icons";
-
 import LandingScreen from '../screens/LandingScreen';
 import HomeScreen from '../screens/HomeScreen';
 import MakeMoveScreen from '../screens/MakeMoveScreen';
-import LoadingPage from '../screens/LoadingPage';
+import LoadingPage from '../components/LoadingPage';
 import GameListScreen from '../screens/GameListScreen';
 import WinnerScreen from '../screens/WinnerScreen';
 import LooseScreen from '../screens/LooseScreen';
 import DrawScreen from '../screens/DrawScreen';
 import Colors from '../constants/colors';
-import MoveOrLoadingScreen from "../screens/MoveOrLoadingScreen";
+import ResultScreen from "../screens/ResultScreen";
 
 const Stack = createStackNavigator();
 
@@ -24,10 +20,9 @@ function NavigationRPS() {
         <Stack.Navigator>
             <Stack.Screen name="Welcome" component={LandingScreen}/>
             <Stack.Screen name="Home" component={HomeScreen}/>
-            <Stack.Screen name="MoveOrLoad" component={MoveOrLoadingScreen} />
             <Stack.Screen name="MakeMove" component={MakeMoveScreen}/>
-            <Stack.Screen name="Loading" component={LoadingPage}/>
             <Stack.Screen name="Games" component={GameListScreen}/>
+            <Stack.Screen name="Result" component={ResultScreen}/>
             <Stack.Screen name="Win" component={WinnerScreen}/>
             <Stack.Screen name="Loose" component={LooseScreen}/>
             <Stack.Screen name="Draw" component={DrawScreen}/>
@@ -96,7 +91,6 @@ const Stack2 = createStackNavigator();
 function MakeMoveLooseWinDraw() {
     return (
         <Stack2.Navigator>
-            <Stack2.Screen name="MoveOrLoad" component={MoveOrLoadingScreen} />
             <Stack2.Screen name="Loading" component={LoadingPage}/>
             <Stack2.Screen name="MakeMove" component={MakeMoveScreen}/>
             <Stack2.Screen name="Win" component={WinnerScreen}/>

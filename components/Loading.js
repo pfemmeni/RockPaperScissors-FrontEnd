@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, } from 'react-native';
-import BodyText from '../components/BodyText';
+import BodyText from './text/BodyText';
 import { FontAwesome } from '@expo/vector-icons';
 
 const Loading = props => {

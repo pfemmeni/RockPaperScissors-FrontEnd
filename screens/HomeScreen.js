@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useContext, createContext} from 'react';
+import React, {useContext} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
-import BodyText from '../components/BodyText';
+import BodyText from '../components/text/BodyText';
 import MainButton from '../components/MainButton';
-import TitleText from '../components/TitleText';
+import TitleText from '../components/text/TitleText';
 import Colors from '../constants/colors';
 import {TokenContext} from '../context/TokenContext';
 import {GameContext} from '../context/GameContext';

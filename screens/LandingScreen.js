@@ -11,7 +11,7 @@ import {
     Keyboard,
 } from 'react-native';
 
-import BodyText from '../components/BodyText';
+import BodyText from '../components/text/BodyText';
 import MainButton from '../components/MainButton';
 import Colors from '../constants/colors';
 import {TokenContext} from '../context/TokenContext';

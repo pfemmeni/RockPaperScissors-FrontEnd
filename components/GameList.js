@@ -1,6 +1,6 @@
 import React from "react";
 import {FlatList, TouchableOpacity, View} from "react-native";
-import BodyText from "./BodyText";
+import BodyText from "./text/BodyText";
 import * as Fetch from '../fetch/Fetch';
 import MainButton from "./MainButton";
 

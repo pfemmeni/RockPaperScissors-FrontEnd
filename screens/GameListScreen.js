@@ -1,11 +1,9 @@
-import React, {useState, createContext, useContext} from 'react';
+import React, { useContext} from 'react';
 import {View, StyleSheet, FlatList, ScrollView} from 'react-native';
-import BodyText from '../components/BodyText';
+import BodyText from '../components/text/BodyText';
 import MainButton from '../components/MainButton';
 import {TokenContext} from '../context/TokenContext';
 import {GameContext} from "../context/GameContext";
-import GameList from "../components/GameList";
-import * as Fetch from '../fetch/Fetch';
 
 const GameListScreen = ({navigation}) => {
     const token = useContext(TokenContext);

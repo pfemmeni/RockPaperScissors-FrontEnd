@@ -1,4 +1,4 @@
-import React, {useState, useEffect, createContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
@@ -35,8 +35,7 @@ export default function App() {
                         setGame(null)
                         return
                     }
-                    console.log("useEffect setInterval", token, game)
-                    setGame(game)
+                        setGame(null)
                 }, error => {
                     setGame(null)
                 })

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import BodyText from '../components/BodyText';
-import TitleText from '../components/TitleText';
+import BodyText from '../text/BodyText';
+import TitleText from '../text/TitleText';
 import { FontAwesome } from '@expo/vector-icons';
 
 const Scissors = props => {

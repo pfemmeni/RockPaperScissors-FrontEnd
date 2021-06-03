@@ -1,11 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
-import TitleText from '../components/TitleText';
+import TitleText from '../components/text/TitleText';
 import Colors from '../constants/colors';
 import {FontAwesome} from "@expo/vector-icons";
 

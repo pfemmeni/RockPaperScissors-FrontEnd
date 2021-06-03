@@ -1,14 +1,14 @@
-import React, {useState, useContext, createContext} from 'react';
-import {View, StyleSheet, Image, Dimensions, Text} from 'react-native';
-import BodyText from '../components/BodyText';
-import TitleText from '../components/TitleText';
+import React, {useState, useContext} from 'react';
+import {View, StyleSheet} from 'react-native';
+import BodyText from '../components/text/BodyText';
+import TitleText from '../components/text/TitleText';
 import Colors from '../constants/colors';
-import Scissors from '../components/Scissors';
-import Paper from '../components/Paper';
-import Rock from '../components/Rock';
+import Scissors from '../components/sign/Scissors';
+import Paper from '../components/sign/Paper';
+import Rock from '../components/sign/Rock';
 import {TokenContext} from '../context/TokenContext';
 import {GameContext} from '../context/GameContext';
-import LoadingPage from "./LoadingPage";
+import LoadingPage from "../components/LoadingPage";
 import * as Fetch from "../fetch/Fetch";
 
 const MakeMoveScreen = ({navigation}) => {
@@ -19,7 +19,7 @@ const MakeMoveScreen = ({navigation}) => {
 
         const movePressedHandler = (move) => {
             Fetch.sendChosenMoveToServer(move, token,setGame)
-            navigation.navigate("Loading");
+            navigation.navigate("Result");
         };
 
         if (!game) {
@@ -27,7 +27,7 @@ const MakeMoveScreen = ({navigation}) => {
         }
         return (
             <View style={styles.screen}>
-                {game.game === "OPEN" && <LoadingPage/>}
+                {game.game === "OPEN" && <LoadingPage text={"JOIN THIS GAME"}/>}
                 {game.game === "ACTIVE" &&
                 <View style={styles.screen}>
                     <View style={styles.textContainer}>
