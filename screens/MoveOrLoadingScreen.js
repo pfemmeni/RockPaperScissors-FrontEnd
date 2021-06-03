@@ -14,10 +14,10 @@ const MoveOrLoadingScreen = () => {
     const [game, setGame] = useContext(GameContext);
 
 /*    Fetch.getGameStatus(token, setGame);
-
+*/
     if (!game) {
         return null;
-    }*/
+    }
 
     return (
         <View style={styles.screen}>

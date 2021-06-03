@@ -34,7 +34,7 @@ export const startGame = (token, setGame) => {
 }
 
 
-export const getGameStatus = (token, setGame) => {
+export const getGameStatus = (token, setGame, onError) => {
     fetch("http://10.0.2.2:8080/games/status",
         {
             method: "GET",
@@ -45,5 +45,11 @@ export const getGameStatus = (token, setGame) => {
         })
         .then(res => res.json())
         .then(json => setGame(json))
-        .catch(error => console.error(error))
+        .catch(error => {
+            console.error(error)
+            if(onError){
+                onError(error)
+            }
+            }
+        )
 }

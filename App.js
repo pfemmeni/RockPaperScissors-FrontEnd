@@ -4,12 +4,11 @@ import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import {} from 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
-
-import LandingScreen from './screens/LandingScreen';
 import NavigationRPS from './navigation/NavigationRPS';
 import {TokenContext} from './context/TokenContext';
 import {GameContext} from './context/GameContext';
 import * as Fetch from "./fetch/Fetch";
+
 
 
 const fetchFonts = () => {
@@ -25,9 +24,29 @@ export default function App() {
     const [game, setGame] = useState(null);
 
     useEffect(() => {
+        console.log("Fetching new token", token, game)
         Fetch.getNewTokenFromServer(setToken)
     }, []);
 
+    useEffect(() => {
+        setInterval(() => {
+            console.log("interval__________--", game)
+            if (!!game) {
+                Fetch.getGameStatus(token, game => {
+                    if(game.error){
+                        console.log("app useEffect Error", game)
+                        setGame(null)
+                        return
+                    }
+                    console.log("app useEffect", token, game)
+                    setGame(game)
+                }, error=> setGame(null))
+            }
+
+        }, 3000)
+
+    }, [])
+    console.log("app ", token, game)
 
     if (!dataLoaded) {
         return (
@@ -38,16 +57,7 @@ export default function App() {
             />
         );
     }
-    useEffect(() => {
-        setInterval(() => {
-            if (!game) {
-                return
-            }
-            Fetch.getGameStatus(token, setGame)
-        }, 3000)
 
-    }, [])
-    console.log("app game ", game)
     return (
         <TokenContext.Provider value={token}>
             <GameContext.Provider value={[game, setGame]}>
