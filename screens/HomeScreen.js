@@ -22,16 +22,7 @@ const HomeScreen = ({navigation}) => {
         navigation.navigate("MoveOrLoad");
     };
 
-    useEffect(() => {
-        setInterval(() => {
-            if (!game) {
-                return
-            }
-            Fetch.getGameStatus(token, setGame)
-        }, 3000)
 
-    }, [])
-    console.log("app game ", game)
 
     return (
         <View style={styles.screen}>

@@ -38,7 +38,16 @@ export default function App() {
             />
         );
     }
+    useEffect(() => {
+        setInterval(() => {
+            if (!game) {
+                return
+            }
+            Fetch.getGameStatus(token, setGame)
+        }, 3000)
 
+    }, [])
+    console.log("app game ", game)
     return (
         <TokenContext.Provider value={token}>
             <GameContext.Provider value={[game, setGame]}>
