@@ -10,7 +10,6 @@ import {GameContext} from "../context/GameContext";
 
 const LoadingPage = ({navigation}) => {
     const [game, setGame] = useContext(GameContext);
-
     return (
         <View style={styles.screen}>
             <TitleText>HI THERE {game.name}</TitleText>
