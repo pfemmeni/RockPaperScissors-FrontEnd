@@ -15,7 +15,7 @@ const LoadingPage = ({navigation}) => {
     const game = useContext(GameContext);
 
     if (game.game === "ACTIVE") {
-        navigation.navigate("MakeMove")
+        return navigation.navigate("MakeMove")
     }
     return (
         <View style={styles.screen}>
