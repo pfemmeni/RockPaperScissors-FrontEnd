@@ -90,8 +90,20 @@ export default NavigationTabRPS;
  /!*</NavigationContainer>*!/
   /!* <NavigationContainer >*!/
  */
+/*
+const Stack2 = createStackNavigator();
 
-
-/*            <Stack.Screen name="Winner" component={WinnerScreen} />
+function MakeMoveLooseWinDraw() {
+    return (
+        <Stack2.Navigator>
+            <Stack2.Screen name="MoveOrLoad" component={MoveOrLoadingScreen} />
+            <Stack2.Screen name="Loading" component={LoadingPage}/>
+            <Stack2.Screen name="MakeMove" component={MakeMoveScreen}/>
+            <Stack2.Screen name="Win" component={WinnerScreen}/>
+            <Stack2.Screen name="Loose" component={LooseScreen}/>
+            <Stack2.Screen name="Draw" component={DrawScreen}/>
+        </Stack2.Navigator>);
+}
+           <Stack.Screen name="Winner" component={WinnerScreen} />
             <Stack.Screen name="Lost" component={LooseScreen} />
             <Stack.Screen name="Draw" component={DrawScreen}/>*/

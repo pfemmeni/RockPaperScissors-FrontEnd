@@ -1,4 +1,3 @@
-
 export const getNewTokenFromServer = (setToken) => {
     fetch("http://10.0.2.2:8080/auth/token")
         .then(res => res.text())
@@ -47,17 +46,38 @@ export const getGameStatusFromServer = (token, setGame, onError) => {
         .then(res => res.json())
         .then(json => setGame(json))
         .catch(error => {
-            console.error(error)
-            if(onError){
-                onError(error)
+                console.error(error)
+                if (onError) {
+                    onError(error)
+                }
             }
-        }
         )
 }
-export const sendChosenMoveToServer = (move, token, setGame) =>{
-    fetch(`http://10.0.2.2:8080/games/move/${move}`,{
-        method:"GET",
-        headers:{
+
+/*export const getJoinableGamesListFromServer = (token, setGameList, onError) => {
+    fetch("http://10.0.2.2:8080/games/",
+        {
+            method: "GET",
+            headers: {
+                Accept: "*!/!*",
+                "token": token
+            }
+        })
+        .then(res => res.json())
+        .then(json => setGameList(json))
+        .catch(error => {
+                console.error(error)
+                if (onError) {
+                    onError(error)
+                }
+            }
+        )
+}*/
+
+export const sendChosenMoveToServer = (move, token, setGame) => {
+    fetch('http://10.0.2.2:8080/games/move/${move}', {
+        method: "GET",
+        headers: {
             Accept: "*/*",
             "token": token
         }
