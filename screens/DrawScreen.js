@@ -5,7 +5,11 @@ import TitleText from '../components/text/TitleText';
 import Colors from '../constants/colors';
 import {FontAwesome} from "@expo/vector-icons";
 
-const DrawScreen = props => {
+const DrawScreen = ({navigation}) => {
+    const gameOverAndNavigateToHome = () => {
+        navigation.navigate('Home');
+    }
+
   return (
     <View style={styles.screen}>
       <TitleText>IT IS DRAW</TitleText>
@@ -19,9 +23,7 @@ const DrawScreen = props => {
       <View style={styles.buttonContainer}>
 
         <MainButton
-          onPress={() => {
-            props.navigation.navigate('Home');
-          }}
+          onPress={() => {gameOverAndNavigateToHome}}
           style={styles.button}
         >
           PLAY AGAIN

@@ -9,8 +9,13 @@ import MainButton from '../components/MainButton';
 import TitleText from '../components/text/TitleText';
 import Colors from '../constants/colors';
 import {FontAwesome} from "@expo/vector-icons";
+import {GameContext} from "../context/GameContext";
 
-const WinnerScreen = props => {
+const WinnerScreen = ({navigation}) => {
+    const gameOverAndNavigateToHome = () => {
+        navigation.navigate('Home');
+    }
+
   return (
     <View style={styles.screen}>
       <TitleText>CONGRATULATIONS</TitleText>
@@ -23,9 +28,7 @@ const WinnerScreen = props => {
       />
       <View style={styles.buttonContainer}>
           <MainButton
-            onPress={() => {
-              props.navigation.navigate('Home');
-            }}
+            onPress={() => {gameOverAndNavigateToHome}}
             style={styles.button}
           >
             PLAY AGAIN

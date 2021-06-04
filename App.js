@@ -35,7 +35,7 @@ export default function App() {
                         setGame(null)
                         return
                     }
-                        setGame(null)
+                    setGame(game)
                 }, error => {
                     setGame(null)
                 })

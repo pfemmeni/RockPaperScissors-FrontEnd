@@ -54,7 +54,7 @@ export const getGameStatusFromServer = (token, setGame, onError) => {
         )
 }
 
-/*export const getJoinableGamesListFromServer = (token, setGameList, onError) => {
+export const getJoinableGamesListFromServer = (token, setGameList, onError) => {
     fetch("http://10.0.2.2:8080/games/",
         {
             method: "GET",
@@ -72,7 +72,7 @@ export const getGameStatusFromServer = (token, setGame, onError) => {
                 }
             }
         )
-}*/
+}
 
 export const sendChosenMoveToServer = (move, token, setGame) => {
     fetch(`http://10.0.2.2:8080/games/move/${move}`, {

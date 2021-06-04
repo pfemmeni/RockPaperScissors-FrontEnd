@@ -7,11 +7,9 @@ import Colors from '../constants/colors';
 import {FontAwesome} from "@expo/vector-icons";
 import {GameContext} from "../context/GameContext";
 
-const LooseScreen = ({navigation}) => {
-    const [game, setGame] = useContext(GameContext);
+const LoseScreen = ({navigation}) => {
 
     const gameOverAndNavigateToHome = () => {
-        setGame(null)
         navigation.navigate('Home');
     }
 
@@ -55,4 +53,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default LooseScreen;
+export default LoseScreen;

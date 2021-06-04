@@ -8,7 +8,7 @@ import MakeMoveScreen from '../screens/MakeMoveScreen';
 import LoadingPage from '../components/LoadingPage';
 import GameListScreen from '../screens/GameListScreen';
 import WinnerScreen from '../screens/WinnerScreen';
-import LooseScreen from '../screens/LooseScreen';
+import LoseScreen from '../screens/LoseScreen';
 import DrawScreen from '../screens/DrawScreen';
 import Colors from '../constants/colors';
 import ResultScreen from "../screens/ResultScreen";
@@ -24,7 +24,7 @@ function NavigationRPS() {
             <Stack.Screen name="Games" component={GameListScreen}/>
             <Stack.Screen name="Result" component={ResultScreen}/>
             <Stack.Screen name="Win" component={WinnerScreen}/>
-            <Stack.Screen name="Loose" component={LooseScreen}/>
+            <Stack.Screen name="Lose" component={LoseScreen}/>
             <Stack.Screen name="Draw" component={DrawScreen}/>
         </Stack.Navigator>
 
@@ -40,7 +40,7 @@ function MakeMoveLooseWinDraw() {
             <Stack2.Screen name="Loading" component={LoadingPage}/>
             <Stack2.Screen name="MakeMove" component={MakeMoveScreen}/>
             <Stack2.Screen name="Win" component={WinnerScreen}/>
-            <Stack2.Screen name="Loose" component={LooseScreen}/>
+            <Stack2.Screen name="Lose" component={LoseScreen}/>
             <Stack2.Screen name="Draw" component={DrawScreen}/>
         </Stack2.Navigator>);
 }
@@ -94,10 +94,10 @@ function MakeMoveLooseWinDraw() {
             <Stack2.Screen name="Loading" component={LoadingPage}/>
             <Stack2.Screen name="MakeMove" component={MakeMoveScreen}/>
             <Stack2.Screen name="Win" component={WinnerScreen}/>
-            <Stack2.Screen name="Loose" component={LooseScreen}/>
+            <Stack2.Screen name="Loose" component={LoseScreen}/>
             <Stack2.Screen name="Draw" component={DrawScreen}/>
         </Stack2.Navigator>);
 }
            <Stack.Screen name="Winner" component={WinnerScreen} />
-            <Stack.Screen name="Lost" component={LooseScreen} />
+            <Stack.Screen name="Lost" component={LoseScreen} />
             <Stack.Screen name="Draw" component={DrawScreen}/>*/
