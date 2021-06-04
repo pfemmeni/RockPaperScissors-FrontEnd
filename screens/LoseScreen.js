@@ -24,7 +24,7 @@ const LoseScreen = ({navigation}) => {
                 style={styles.icon}
             />
             <View style={styles.buttonContainer}>
-                <MainButton onPress={gameOverAndNavigateToHome}
+                <MainButton onPress={() => navigation.navigate('Home')}
                             style={styles.button}
                 >
                     PLAY AGAIN

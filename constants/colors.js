@@ -5,4 +5,5 @@ export default {
   greyish: 'grey',
   purple: '#c717fc',
   background: '#FAFAFA', //samma gråa som bilden
+  accendent: '#4a148c',
 };

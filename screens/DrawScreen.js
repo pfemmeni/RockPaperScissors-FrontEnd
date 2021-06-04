@@ -23,7 +23,7 @@ const DrawScreen = ({navigation}) => {
       <View style={styles.buttonContainer}>
 
         <MainButton
-          onPress={() => {gameOverAndNavigateToHome}}
+          onPress={() => navigation.navigate('Home')}
           style={styles.button}
         >
           PLAY AGAIN

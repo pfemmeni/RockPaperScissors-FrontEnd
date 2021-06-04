@@ -8,7 +8,7 @@ import {GameContext} from "../context/GameContext";
 
 const GameList = (game, {navigation}) => {
     const token = useContext(TokenContext);
-    const [game, setGame] = useContext(GameContext);
+    //const [game, setGame] = useContext(GameContext);
 
     const opponentName= game.opponentName.length ===0 ? "Anonymouse" : game.opponentName
 

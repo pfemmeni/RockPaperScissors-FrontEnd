@@ -21,7 +21,7 @@ function NavigationRPS() {
             <Stack.Screen name="Welcome" component={LandingScreen}/>
             <Stack.Screen name="Home" component={HomeScreen}/>
             <Stack.Screen name="MakeMove" component={MakeMoveScreen}/>
-            <Stack.Screen name="Games" component={GameListScreen}/>
+            {/*<Stack.Screen name="Games" component={GameListScreen}/>*/}
             <Stack.Screen name="Result" component={ResultScreen}/>
             <Stack.Screen name="Win" component={WinnerScreen}/>
             <Stack.Screen name="Lose" component={LoseScreen}/>
@@ -71,7 +71,7 @@ function NavigationTabRPS() {
                        tabBarOptions={{activeTintColor: Colors.primaryColor, inactiveTintColor: Colors.greyish}}>
             <Tab.Screen name="Home" component={NavigationRPS}/>
             <Tab.Screen name="Game" component={MakeMoveScreen}/>
-            <Tab.Screen name="Games" component={GameListScreen}/>
+            {/*<Tab.Screen name="Games" component={GameListScreen}/>*/}
         </Tab.Navigator>
     );
 }

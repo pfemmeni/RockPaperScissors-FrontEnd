@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, ActivityIndicator, Text} from 'react-native';
+import {View, StyleSheet, ActivityIndicator, Text, Image, Dimensions} from 'react-native';
 
 import TitleText from './text/TitleText';
 import Colors from '../constants/colors';
 import {GameContext} from "../context/GameContext";
+import BodyText from "./text/BodyText";
 
 
 const LoadingPage = (props, {navigation}) => {
@@ -14,7 +15,11 @@ const LoadingPage = (props, {navigation}) => {
             <TitleText>HI THERE {game.name}</TitleText>
             <TitleText>WAITING FOR AN OPPONENT TO</TitleText>
             <Text>{props.text}</Text>
-            <ActivityIndicator size={200} color="#00ff00"/>
+            <View style={styles.spinContainer}>
+                <ActivityIndicator size={150} color="#4a148c"/>
+            </View>
+            <BodyText>Meanwhile you may look at this:</BodyText>
+            <Image source={require('../assets/funny2.jpg')} style={styles.image}/>
         </View>
     );
 }
@@ -27,6 +32,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    spinContainer: {
+        marginHorizontal: 10,
+    },
+    imageContainer: {
+        width: Dimensions.get('window').width * 0.7,
+        height: Dimensions.get('window').width * 0.7,
+        overflow: 'hidden',
+        marginVertical: Dimensions.get('window').height / 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
+    image: {
+        width: '85%',
+        height: '45%',
+    }
 });
 
 

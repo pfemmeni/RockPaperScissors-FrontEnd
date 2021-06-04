@@ -1,3 +1,4 @@
+/*
 import React, {useContext, useEffect, useState} from 'react';
 import {View, StyleSheet, FlatList, ScrollView} from 'react-native';
 import BodyText from '../components/text/BodyText';
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
 
 export default GameListScreen;
 
-/*
+/!*
 
 {gameList}
 
@@ -57,13 +58,14 @@ const renderGameList = () => {};
 
 
 
-{/* <FlatList data={listOfOpenGames} keyExtractor={(gameList, index) => gameList.id} data={gameList} renderItem={renderGameList}/>
+{/!* <FlatList data={listOfOpenGames} keyExtractor={(gameList, index) => gameList.id} data={gameList} renderItem={renderGameList}/>
                  <FlatList keyExtractor={(listItem, index) => listItem.id} data={} renderItem={renderGameList} numColumns={2} />
 
 
             <GameList gameListData={listOfOpenGames} keyExtractor={(gameId, index) => game.id} renderItem={renderGameList} />
 
 
- */
+ *!/
 
 
+*/
