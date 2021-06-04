@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     spinContainer: {
-        marginHorizontal: 10,
+        marginHorizontal: 20,
     },
     imageContainer: {
         width: Dimensions.get('window').width * 0.7,
