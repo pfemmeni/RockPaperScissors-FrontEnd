@@ -8,6 +8,7 @@ import NavigationRPS from './navigation/NavigationRPS';
 import {TokenContext} from './context/TokenContext';
 import {GameContext} from './context/GameContext';
 import * as Fetch from "./fetch/Fetch";
+import {GameListContext} from "./context/GameListContext";
 
 
 const fetchFonts = () => {
@@ -21,6 +22,7 @@ export default function App() {
     const [dataLoaded, setDataLoaded] = useState(false);
     const [token, setToken] = useState('');
     const [game, setGame] = useState(null);
+    const [gameList, setGameList] = useState([]);
 
     useEffect(() => {
         Fetch.getNewTokenFromServer(setToken)
@@ -44,6 +46,12 @@ export default function App() {
 
     }, [token, game, setGame])
 
+    useEffect(() => {
+        setInterval(() => {
+            Fetch.getJoinableGamesFromServer(token, setGameList);
+        }, 3000)
+    }, [token, setGameList]);
+
 
     if (!dataLoaded) {
         return (
@@ -58,45 +66,22 @@ export default function App() {
     return (
         <TokenContext.Provider value={token}>
             <GameContext.Provider value={[game, setGame]}>
-                <NavigationContainer>
-                    <NavigationRPS/>
-                </NavigationContainer>
+                <GameListContext.Provider value={[gameList, setGameList]}>
+                    <NavigationContainer>
+                        <NavigationRPS/>
+                    </NavigationContainer>
+                </GameListContext.Provider>
             </GameContext.Provider>
         </TokenContext.Provider>
     );
 }
 
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-    },
-});
+const styles = StyleSheet.create(
+    {
+        screen: {
+            flex: 1,
+        }
+        ,
+    }
+);
 
-//const startGameHandler = () => {};
-//<GameContext.Provider value={game}>
-//</GameContext.Provider>
-
-//let content = <HomeScreen></HomeScreen>;
-//   // <LandingScreen onStartGame={startGameHandler} />;
-
-//  // if (startGameHandler) {
-//     //content =<MakeMoveScreen></MakeMoveScreen>
-//     //content =
-//   }
-
-/*   const allValues = {
-    token,
-    setToken,
-    playerName,
-    setPlayerName,
-    playerMove,
-    setPlayerMove,
-    opponentName,
-    setOpponentName,
-    opponentMove,
-    setOpponentMove,
-<AppContext value={allValues}></AppContext>
-  }
-
-
-  initialRouteName="Landing"*/

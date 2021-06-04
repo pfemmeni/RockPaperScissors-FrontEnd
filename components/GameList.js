@@ -3,6 +3,8 @@ import {FlatList, Text, TouchableOpacity, View} from "react-native";
 import BodyText from "./text/BodyText";
 import * as Fetch from '../fetch/Fetch';
 import MainButton from "./MainButton";
+import {TokenContext} from "../context/TokenContext";
+import {GameContext} from "../context/GameContext";
 
 const GameList = (game, {navigation}) => {
     const token = useContext(TokenContext);

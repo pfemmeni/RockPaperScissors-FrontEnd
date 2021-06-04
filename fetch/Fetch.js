@@ -65,13 +65,11 @@ export const getJoinableGamesFromServer = (token, setGameList) => {
         })
         .then(res => res.json())
         .then(json => setGameList(json))
-        .catch(error => {
-                console.error(error)
-                if (onError) {
-                    onError(error)
-                }
-            }
-        )
+        .catch(error => console.error(error))
+
+}
+export const joinGameOnServer = (token, game, setGame) =>{
+
 }
 
 export const sendChosenMoveToServer = (move, token, setGame) => {

@@ -11,7 +11,7 @@ const GameListScreen = ({navigation}) => {
     const token = useContext(TokenContext);
     const [game, setGame] = useContext(GameContext);
 
-    const [gameList, setGameList] = useState([]);
+    const [gameList, setGameList] = useContext(GameListContext);
 
     const renderGameList = () => {
         return gameList.map((game) => {
@@ -24,7 +24,14 @@ const GameListScreen = ({navigation}) => {
     return (
         <View style={styles.screen}>
             <BodyText>Kommer att komma en lista här</BodyText>
-            <MainButton>Joina ett spel</MainButton>
+            <View>
+                {gamelist && renderGameList()}
+            </View>
+
+            <FlatList data={props.gameListData} renderItem={renderGameList}
+                      keyExtractor={(gameItem, index) => gameItem.id} style={{width: '100%'}}/>
+
+
         </View>
     );
 };
