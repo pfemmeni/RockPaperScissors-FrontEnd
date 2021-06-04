@@ -13,13 +13,14 @@ const GameListScreen = ({navigation}) => {
 
     const [gameList, setGameList] = useState([]);
 
-    useEffect(() => {
-        Fetch.getJoinableGamesListFromServer(token, setGameList);
-    }, [token, setGameList]);
-
-
-
-
+    const renderGameList = () => {
+        return gameList.map((game) => {
+            return (
+                <GameList key={game.id}
+                          game={game}/>
+            )
+        })
+    }
     return (
         <View style={styles.screen}>
             <BodyText>Kommer att komma en lista här</BodyText>

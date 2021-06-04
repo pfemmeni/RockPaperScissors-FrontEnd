@@ -54,7 +54,7 @@ export const getGameStatusFromServer = (token, setGame, onError) => {
         )
 }
 
-export const getJoinableGamesListFromServer = (token, setGameList, onError) => {
+export const getJoinableGamesFromServer = (token, setGameList) => {
     fetch("http://10.0.2.2:8080/games/",
         {
             method: "GET",
