@@ -24,22 +24,27 @@ export default function App() {
     const [game, setGame] = useState(null);
     const [gameList, setGameList] = useState([]);
 
+
     useEffect(() => {
+        console.log("token taken ", token)
         Fetch.getNewTokenFromServer(setToken)
+       console.log("token taken ", token)
     }, []);
 
     useEffect(() => {
         setInterval(() => {
-            // console.log("useEffect setInterval", token, game)
+             //console.log("useEffect setInterval", token, game)
             if (game) {
                 Fetch.getGameStatusFromServer(token, game => {
                     if (game.error) {
                         setGame(null)
+                        console.log("eror", error)
                         return
                     }
                     setGame(game)
                 }, error => {
                     setGame(null)
+
                 })
             }
         }, 10000)
