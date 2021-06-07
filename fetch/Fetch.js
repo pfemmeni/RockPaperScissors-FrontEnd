@@ -1,5 +1,5 @@
 export const getNewTokenFromServer = (setToken) => {
-    fetch("http://10.0.2.2:8080/auth/token")
+    fetch("http://localhost:8080/auth/token")
         .then(res => res.text())
         .then(setToken)
 }
@@ -20,7 +20,7 @@ export const storeNameInServer = (token, name) => {
 }
 
 export const startGame = (token, setGame) => {
-    fetch("http://10.0.2.2:8080/games/start",
+    fetch("http://localhost:8080/games/start",
         {
             method: "GET",
             headers: {

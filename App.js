@@ -33,7 +33,7 @@ export default function App() {
 
     useEffect(() => {
         setInterval(() => {
-             //console.log("useEffect setInterval", token, game)
+             console.log("useEffect setInterval", token, game)
             if (game) {
                 Fetch.getGameStatusFromServer(token, game => {
                     if (game.error) {
