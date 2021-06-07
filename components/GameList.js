@@ -19,13 +19,13 @@ const GameList = ({gameToJoin, onJoinClicked}) => {
 
     return (
         <View>
-            <TouchableOpacity>
-                <View style={styles.listContainer} onPress={() => onJoinClicked(token, gameToJoin.id, setGame)}>
-                    <Text>PLAY AGAINST:</Text>
-                    <Text>{!gameToJoin.name ? "Anonymous" : gameToJoin.name}</Text>
-                    <View>
-                        <Button style={styles.button} title={"Join"} />
+            <TouchableOpacity onPress={() => onJoinClicked(token, gameToJoin.id, setGame)}>
+                <View style={styles.listContainer} >
+                    <View style={styles.text}>
+                        <Text>PLAY AGAINST:</Text>
+                        <Text>{!gameToJoin.name ? "Anonymous" : gameToJoin.name}</Text>
                     </View>
+                    <Text style={styles.button}>JOIN</Text>
                 </View>
             </TouchableOpacity>
         </View>
@@ -40,14 +40,15 @@ const styles = StyleSheet.create({
         margin: 15,
         padding: 20,
         borderRadius: 10,
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         alignItems: 'center',
     },
-    text: {},
+    text: {
+        flexDirection: 'row',
+
+    },
     button: {
-        width: 10,
-        padding: 5,
-        height: 10
+        marginRight: 10
     },
 });
 export default GameList;
