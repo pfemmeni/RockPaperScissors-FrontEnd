@@ -30,12 +30,12 @@ const GameListScreen = ({navigation}) => {
     }
     return (
         <View style={styles.screen}>
-            <BodyText>Kommer att komma en lista här</BodyText>
             <View>
                 {gameList && renderGameList()}
             </View>
 {/*
 
+            <BodyText>Kommer att komma en lista här</BodyText>
             <FlatList data={props.gameListData} renderItem={renderGameList}
                       keyExtractor={(gameItem, index) => gameItem.id} style={{width: '100%'}}/>
 */}
