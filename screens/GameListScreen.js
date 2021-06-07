@@ -20,11 +20,13 @@ const GameListScreen = ({navigation}) => {
         return gameList.map((game) => {
             return (
                 <GameList key={game.id}
-                          game={game}
-                onJoinClicked={joinGame}
+                          gameToJoin={game}
+                onJoinClicked={(token, gameId, setGame) => {
+                    Fetch.joinGameOnServer(token, gameId, setGame)
+                    navigation.navigate("MakeMove")}}
                 />
             )
-        })
+        });
     }
     return (
         <View style={styles.screen}>
@@ -46,7 +48,7 @@ const GameListScreen = ({navigation}) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        alignItems: 'center',
+       // alignItems: 'center',
         justifyContent: 'center',
     },
 });
