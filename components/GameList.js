@@ -1,30 +1,30 @@
 import React, {useContext} from "react";
-import {FlatList, Text, TouchableOpacity, View} from "react-native";
+import {Button, Text, TouchableOpacity, View} from "react-native";
 import BodyText from "./text/BodyText";
 import * as Fetch from '../fetch/Fetch';
 import MainButton from "./MainButton";
 import {TokenContext} from "../context/TokenContext";
 import {GameContext} from "../context/GameContext";
 
-const GameList = (game, {navigation}) => {
+const GameList = (gameToJoin, onJoinClicked) => {
     const token = useContext(TokenContext);
-    //const [game, setGame] = useContext(GameContext);
+    const [game, setGame] = useContext(GameContext);
 
-    const opponentName= game.opponentName.length ===0 ? "Anonymouse" : game.opponentName
 
     const joinGame =()=>{
-        Fetch.joinGameOnServer(token, game, setGame)
+        Fetch.joinGameOnServer(token, props.game.id, setGame)
         navigation.navigate("MakeMove")
     }
 
     return (
         <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onSelectGame={() => joinGame}>
-                <Text>{opponentName}</Text>
-                <MainButton>JOIN</MainButton>
+            <TouchableOpacity >
+                <Text>{!gameToJoin.name? "Anonymous": gameToJoin.name}</Text>
+                <Button title={"Join"} onPress={() => onJoinClicked(token, gameToJoin.id, setGame)}/>
             </TouchableOpacity>
         </View>
     )
 
 }
 export default GameList;
+//onSelectGame={() => joinGame}

@@ -27,7 +27,7 @@ const MakeMoveScreen = ({navigation}) => {
         }
         return (
             <View style={styles.screen}>
-                {game.game === "OPEN" && <LoadingPage text={"JOIN THIS GAME"}/>}
+                {game.game === "OPEN" && <LoadingPage />}
                 {game.game === "ACTIVE" &&
                 <View style={styles.screen}>
                     <View style={styles.textContainer}>

@@ -30,7 +30,7 @@ export default function App() {
 
     useEffect(() => {
         setInterval(() => {
-            console.log("useEffect setInterval", token, game)
+            // console.log("useEffect setInterval", token, game)
             if (game) {
                 Fetch.getGameStatusFromServer(token, game => {
                     if (game.error) {
@@ -46,11 +46,11 @@ export default function App() {
 
     }, [token, game, setGame])
 
-/*    useEffect(() => {
+    useEffect(() => {
         setInterval(() => {
             Fetch.getJoinableGamesFromServer(token, setGameList);
-        }, 3000)
-    }, [token, setGameList]);*/
+        }, 10000)
+    }, [token, setGameList]);
 
 
     if (!dataLoaded) {
@@ -66,13 +66,22 @@ export default function App() {
     return (
         <TokenContext.Provider value={token}>
             <GameContext.Provider value={[game, setGame]}>
-                {/*<GameListContext.Provider value={[gameList, setGameList]}>*/}
+                <GameListContext.Provider value={[gameList, setGameList]}>
                     <NavigationContainer>
                         <NavigationRPS/>
                     </NavigationContainer>
-                {/*</GameListContext.Provider>*/}
+                </GameListContext.Provider>
             </GameContext.Provider>
         </TokenContext.Provider>
     );
 }
+
+const styles = StyleSheet.create(
+    {
+        screen: {
+            flex: 1,
+        }
+        ,
+    }
+);
 

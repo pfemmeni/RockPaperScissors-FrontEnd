@@ -6,12 +6,13 @@ import LandingScreen from '../screens/LandingScreen';
 import HomeScreen from '../screens/HomeScreen';
 import MakeMoveScreen from '../screens/MakeMoveScreen';
 import LoadingPage from '../components/LoadingPage';
-import GameListScreen from '../screens/GameListScreen';
+//import GameListScreen from '../screens/GameListScreen';
 import WinnerScreen from '../screens/WinnerScreen';
 import LoseScreen from '../screens/LoseScreen';
 import DrawScreen from '../screens/DrawScreen';
 import Colors from '../constants/colors';
 import ResultScreen from "../screens/ResultScreen";
+import GameListScreen from "../screens/GameListScreen";
 
 const Stack = createStackNavigator();
 
@@ -21,7 +22,7 @@ function NavigationRPS() {
             <Stack.Screen name="Welcome" component={LandingScreen}/>
             <Stack.Screen name="Home" component={HomeScreen}/>
             <Stack.Screen name="MakeMove" component={MakeMoveScreen}/>
-            {/*<Stack.Screen name="Games" component={GameListScreen}/>*/}
+           <Stack.Screen name="Games" component={GameListScreen}/>
             <Stack.Screen name="Result" component={ResultScreen}/>
             <Stack.Screen name="Win" component={WinnerScreen}/>
             <Stack.Screen name="Lose" component={LoseScreen}/>
@@ -71,7 +72,7 @@ function NavigationTabRPS() {
                        tabBarOptions={{activeTintColor: Colors.primaryColor, inactiveTintColor: Colors.greyish}}>
             <Tab.Screen name="Home" component={NavigationRPS}/>
             <Tab.Screen name="Game" component={MakeMoveScreen}/>
-            {/*<Tab.Screen name="Games" component={GameListScreen}/>*/}
+            <Tab.Screen name="Games" component={GameListScreen}/>
         </Tab.Navigator>
     );
 }

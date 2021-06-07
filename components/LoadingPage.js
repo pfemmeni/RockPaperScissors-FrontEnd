@@ -7,14 +7,21 @@ import {GameContext} from "../context/GameContext";
 import BodyText from "./text/BodyText";
 
 
-const LoadingPage = (props, {navigation}) => {
+const LoadingPage = () => {
     const [game, setGame] = useContext(GameContext);
+    let text = ""
+    if(game.game==="ACTIVE"){
+        text = "MAKE A MOVE"
+    }
+    if(game.game ==="OPEN"){
+        text = "JOIN THIS GAME"
+    }
 
     return (
         <View style={styles.screen}>
             <TitleText>HI THERE {game.name}</TitleText>
             <TitleText>WAITING FOR AN OPPONENT TO</TitleText>
-            <Text>{props.text}</Text>
+            <Text>{text}</Text>
             <View style={styles.spinContainer}>
                 <ActivityIndicator size={150} color="#4a148c"/>
             </View>

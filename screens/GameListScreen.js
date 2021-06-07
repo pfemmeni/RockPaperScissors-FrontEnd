@@ -1,4 +1,4 @@
-/*
+
 import React, {useContext, useEffect, useState} from 'react';
 import {View, StyleSheet, FlatList, ScrollView} from 'react-native';
 import BodyText from '../components/text/BodyText';
@@ -7,18 +7,22 @@ import {TokenContext} from '../context/TokenContext';
 import {GameContext} from "../context/GameContext";
 import * as Fetch from "../fetch/Fetch";
 import GameList from "../components/GameList";
+import {GameListContext} from "../context/GameListContext";
 
 const GameListScreen = ({navigation}) => {
-    const token = useContext(TokenContext);
-    const [game, setGame] = useContext(GameContext);
-
     const [gameList, setGameList] = useContext(GameListContext);
 
+    const joinGame =(token, gameId, setGame)=>{
+        Fetch.joinGameOnServer(token, gameId, setGame)
+        navigation.navigate("MakeMove")
+    }
     const renderGameList = () => {
         return gameList.map((game) => {
             return (
                 <GameList key={game.id}
-                          game={game}/>
+                          game={game}
+                onJoinClicked={joinGame}
+                />
             )
         })
     }
@@ -26,11 +30,13 @@ const GameListScreen = ({navigation}) => {
         <View style={styles.screen}>
             <BodyText>Kommer att komma en lista här</BodyText>
             <View>
-                {gamelist && renderGameList()}
+                {gameList && renderGameList()}
             </View>
+{/*
 
             <FlatList data={props.gameListData} renderItem={renderGameList}
                       keyExtractor={(gameItem, index) => gameItem.id} style={{width: '100%'}}/>
+*/}
 
 
         </View>
@@ -47,7 +53,7 @@ const styles = StyleSheet.create({
 
 export default GameListScreen;
 
-/!*
+/*
 
 {gameList}
 
@@ -58,14 +64,13 @@ const renderGameList = () => {};
 
 
 
-{/!* <FlatList data={listOfOpenGames} keyExtractor={(gameList, index) => gameList.id} data={gameList} renderItem={renderGameList}/>
+{/* <FlatList data={listOfOpenGames} keyExtractor={(gameList, index) => gameList.id} data={gameList} renderItem={renderGameList}/>
                  <FlatList keyExtractor={(listItem, index) => listItem.id} data={} renderItem={renderGameList} numColumns={2} />
 
 
             <GameList gameListData={listOfOpenGames} keyExtractor={(gameId, index) => game.id} renderItem={renderGameList} />
 
 
- *!/
+ */
 
 
-*/

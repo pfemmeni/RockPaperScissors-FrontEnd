@@ -59,7 +59,7 @@ export const getJoinableGamesFromServer = (token, setGameList) => {
         {
             method: "GET",
             headers: {
-                Accept: "*!/!*",
+                Accept: "*/*",
                 "token": token
             }
         })
@@ -68,7 +68,19 @@ export const getJoinableGamesFromServer = (token, setGameList) => {
         .catch(error => console.error(error))
 
 }
-export const joinGameOnServer = (token, game, setGame) =>{
+export const joinGameOnServer = (token, gameId, setGame) =>{
+
+    fetch(`http://10.0.2.2:8080/games/join/${gameId}`, {
+        method: "GET",
+        headers: {
+            Accept: "*/*",
+            "token": token
+        }
+    })
+        .then(res => res.json())
+        .then(json => setGame(json))
+        .catch(error => console.error(error))
+
 
 }
 
