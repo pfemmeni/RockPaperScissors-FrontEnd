@@ -5,10 +5,7 @@ import TitleText from '../components/text/TitleText';
 import Colors from '../constants/colors';
 import {FontAwesome} from "@expo/vector-icons";
 
-const DrawScreen = ({navigation}) => {
-    const gameOverAndNavigateToHome = () => {
-        navigation.navigate('Home');
-    }
+const DrawScreen = ({onGameOver}) => {
 
   return (
     <View style={styles.screen}>
@@ -23,7 +20,7 @@ const DrawScreen = ({navigation}) => {
       <View style={styles.buttonContainer}>
 
         <MainButton
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => onGameOver()}
           style={styles.button}
         >
           PLAY AGAIN

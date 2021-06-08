@@ -26,8 +26,8 @@ const ResultScreen = ({navigation}) => {
         <View style={styles.screen}>
             {game.game === "ACTIVE" && <LoadingPage/>}
             {game.game ==="WIN" && <WinnerScreen onGameOver={gameOverAndNavigateToHome}/>}
-            {game.game ==="DRAW" && <DrawScreen/>}
-            {game.game ==="LOSE" && <LoseScreen/>}
+            {game.game ==="DRAW" && <DrawScreen  onGameOver={gameOverAndNavigateToHome}/>}
+            {game.game ==="LOSE" && <LoseScreen  onGameOver={gameOverAndNavigateToHome}/>}
         </View>
 
     )

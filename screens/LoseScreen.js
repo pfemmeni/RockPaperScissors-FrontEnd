@@ -7,12 +7,7 @@ import Colors from '../constants/colors';
 import {FontAwesome} from "@expo/vector-icons";
 import {GameContext} from "../context/GameContext";
 
-const LoseScreen = ({navigation}) => {
-
-    const gameOverAndNavigateToHome = () => {
-        navigation.navigate('Home');
-    }
-
+const LoseScreen = ({onGameOver}) => {
     return (
         <View style={styles.screen}>
             <TitleText>BETTER LUCK NEXT TIME</TitleText>
@@ -24,7 +19,7 @@ const LoseScreen = ({navigation}) => {
                 style={styles.icon}
             />
             <View style={styles.buttonContainer}>
-                <MainButton onPress={() => navigation.navigate('Home')}
+                <MainButton onPress={() => onGameOver()}
                             style={styles.button}
                 >
                     PLAY AGAIN
