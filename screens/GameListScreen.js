@@ -1,6 +1,6 @@
 
 import React, {useContext, useEffect, useState} from 'react';
-import {View, StyleSheet, FlatList, ScrollView} from 'react-native';
+import {View, StyleSheet, FlatList, ScrollView, Text} from 'react-native';
 import BodyText from '../components/text/BodyText';
 import MainButton from '../components/MainButton';
 import {TokenContext} from '../context/TokenContext';
@@ -12,6 +12,7 @@ import {GameListContext} from "../context/GameListContext";
 const GameListScreen = ({navigation}) => {
     const [gameList, setGameList] = useContext(GameListContext);
 
+
     const joinGame =(token, gameId, setGame)=>{
         Fetch.joinGameOnServer(token, gameId, setGame)
         navigation.navigate("MakeMove")
@@ -21,16 +22,15 @@ const GameListScreen = ({navigation}) => {
             return (
                 <GameList key={game.id}
                           gameToJoin={game}
-                onJoinClicked={(token, gameId, setGame) => {
-                    Fetch.joinGameOnServer(token, gameId, setGame)
-                    navigation.navigate("MakeMove")}}
+                onJoinClicked={joinGame}
                 />
             )
-        });
+        })
     }
     return (
         <View style={styles.screen}>
             <View>
+                {!gameList &&  <Text>No games to join yet...  </Text>}
                 {gameList && renderGameList()}
             </View>
 {/*

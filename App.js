@@ -9,6 +9,7 @@ import {TokenContext} from './context/TokenContext';
 import {GameContext} from './context/GameContext';
 import * as Fetch from "./fetch/Fetch";
 import {GameListContext} from "./context/GameListContext";
+import {GameOverContext} from "./context/GameOverContext";
 
 
 const fetchFonts = () => {
@@ -20,42 +21,47 @@ const fetchFonts = () => {
 
 export default function App() {
     const [dataLoaded, setDataLoaded] = useState(false);
-    const [token, setToken] = useState('');
-    const [game, setGame] = useState(null);
+    let [token, setToken] = useState('');
+    let [game, setGame] = useState(null);
     const [gameList, setGameList] = useState([]);
+    const [gameOver, setGameOver] = useState(false);
 
 
     useEffect(() => {
-        console.log("token taken ", token)
         Fetch.getNewTokenFromServer(setToken)
-       console.log("token taken ", token)
+
     }, []);
 
     useEffect(() => {
-        setInterval(() => {
-             console.log("useEffect setInterval", token, game)
+        const timer = setInterval (() => {
+            console.log("useEffect setInterval---------------", token, game, gameOver)
             if (game) {
+                if (gameOver) {
+                    setGame(null)
+                    setGameOver(false)
+                    return
+                }
                 Fetch.getGameStatusFromServer(token, game => {
                     if (game.error) {
                         setGame(null)
-                        console.log("eror", error)
                         return
                     }
                     setGame(game)
                 }, error => {
                     setGame(null)
-
                 })
             }
         }, 10000)
-
-    }, [token, game, setGame])
+        return ()=> {
+            clearInterval(timer)
+        }
+    }, [token, game, gameOver])
 
     useEffect(() => {
         setInterval(() => {
             Fetch.getJoinableGamesFromServer(token, setGameList);
         }, 10000)
-    }, [token, setGameList]);
+    }, []);
 
 
     if (!dataLoaded) {
@@ -72,9 +78,11 @@ export default function App() {
         <TokenContext.Provider value={token}>
             <GameContext.Provider value={[game, setGame]}>
                 <GameListContext.Provider value={[gameList, setGameList]}>
-                    <NavigationContainer>
-                        <NavigationRPS/>
-                    </NavigationContainer>
+                    <GameOverContext.Provider value={[gameOver, setGameOver]}>
+                        <NavigationContainer>
+                            <NavigationRPS/>
+                        </NavigationContainer>
+                    </GameOverContext.Provider>
                 </GameListContext.Provider>
             </GameContext.Provider>
         </TokenContext.Provider>
