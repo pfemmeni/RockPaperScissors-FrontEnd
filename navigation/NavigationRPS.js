@@ -12,6 +12,7 @@ import DrawScreen from '../screens/DrawScreen';
 import ResultScreen from "../screens/ResultScreen";
 import GameListScreen from "../screens/GameListScreen";
 import Colors from '../constants/colors';
+import GameHistoryScreen from "../screens/GameHistoryScreen";
 
 const Stack = createStackNavigator();
 
@@ -56,9 +57,9 @@ function NavigationTabRPS() {
 
                 if (route.name === "Home") {
                     iconName = "home"
-                } else if (route.name === "Game") {
-                    iconName = "gamepad"
                 } else if (route.name === "Games") {
+                    iconName = "gamepad"
+                } else if (route.name === "Game History") {
                     iconName = "list-ul"
                 }
                 return <FontAwesome
@@ -70,8 +71,8 @@ function NavigationTabRPS() {
         })}
                        tabBarOptions={{activeTintColor: Colors.primaryColor, inactiveTintColor: Colors.greyish}}>
             <Tab.Screen name="Home" component={NavigationRPS}/>
-            <Tab.Screen name="Game" component={MakeMoveScreen}/>
             <Tab.Screen name="Games" component={GameListScreen}/>
+            <Tab.Screen name="Game History" component={GameHistoryScreen}/>
         </Tab.Navigator>
     );
 }

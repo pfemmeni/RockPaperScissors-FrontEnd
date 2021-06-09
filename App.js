@@ -9,6 +9,7 @@ import {GameContext} from './context/GameContext';
 import * as Fetch from "./fetch/Fetch";
 import {GameListContext} from "./context/GameListContext";
 import {GameOverContext} from "./context/GameOverContext";
+import {GameHistoryContext} from "./context/GameHistoryContext";
 
 
 const fetchFonts = () => {
@@ -24,6 +25,7 @@ export default function App() {
     let [game, setGame] = useState(null);
     const [gameList, setGameList] = useState([]);
     const [gameOver, setGameOver] = useState(false);
+    const [playedGamesHistory, setPlayedGamesHistory] = useState([])
 
 
     useEffect(() => {
@@ -32,7 +34,7 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-        const timer = setInterval (() => {
+        const timer = setInterval(() => {
             console.log("useEffect setInterval---------------", token, game, gameOver)
             if (game) {
                 if (gameOver) {
@@ -51,7 +53,7 @@ export default function App() {
                 })
             }
         }, 10000)
-        return ()=> {
+        return () => {
             clearInterval(timer)
         }
     }, [token, game, gameOver])
@@ -77,11 +79,13 @@ export default function App() {
         <TokenContext.Provider value={token}>
             <GameContext.Provider value={[game, setGame]}>
                 <GameListContext.Provider value={[gameList, setGameList]}>
-                    <GameOverContext.Provider value={[gameOver, setGameOver]}>
-                        <NavigationContainer>
-                            <NavigationRPS/>
-                        </NavigationContainer>
-                    </GameOverContext.Provider>
+                    <GameHistoryContext.Provider value={[playedGamesHistory, setPlayedGamesHistory]}>
+                        <GameOverContext.Provider value={[gameOver, setGameOver]}>
+                            <NavigationContainer>
+                                <NavigationRPS/>
+                            </NavigationContainer>
+                        </GameOverContext.Provider>
+                    </GameHistoryContext.Provider>
                 </GameListContext.Provider>
             </GameContext.Provider>
         </TokenContext.Provider>

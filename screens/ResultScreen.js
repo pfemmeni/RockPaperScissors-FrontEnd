@@ -7,10 +7,11 @@ import WinnerScreen from "./WinnerScreen";
 import DrawScreen from "./DrawScreen";
 import LoseScreen from "./LoseScreen";
 import {GameOverContext} from "../context/GameOverContext";
+import {GameHistoryContext} from "../context/GameHistoryContext";
 
 const ResultScreen = ({navigation}) => {
     const [game, setGame] = useContext(GameContext);
-    const [playedGamesHistory, setPlayedGamesHistory] = useState([])
+    const [playedGamesHistory, setPlayedGamesHistory] = useContext(GameHistoryContext);
     const [gameOver, setGameOver] = useContext(GameOverContext);
 
     const gameOverAndNavigateToHome = () => {

@@ -45,9 +45,7 @@ const HomeScreen = ({navigation}) => {
             <MainButton style={styles.buttons} onPress={startNewGameAndNavigateHandler}>
                 START NEW GAME
             </MainButton>
-            <Text style={styles.buttons}>
-                ---------------------- OR ----------------------
-            </Text>
+            <Text style={styles.buttons}>OR</Text>
             <MainButton
                 onPress={() => {
                     navigation.navigate('Games')
