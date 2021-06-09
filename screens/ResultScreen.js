@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         backgroundColor: Colors.background,
-        paddingVertical: 10,
-        marginHorizontal: 10,
+        // paddingVertical: 10,
+        // marginHorizontal: 10,
         alignItems: 'center',
         justifyContent: 'center',
     },
