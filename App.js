@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet} from 'react-native';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import {} from 'react-native-gesture-handler';
@@ -88,13 +87,3 @@ export default function App() {
         </TokenContext.Provider>
     );
 }
-
-const styles = StyleSheet.create(
-    {
-        screen: {
-            flex: 1,
-        }
-        ,
-    }
-);
-

@@ -1,4 +1,4 @@
-const fetchRoute  = "http://18.117.253.20:8080"
+const fetchRoute  = "http://18.117.223.101:8080"
 
 export const getNewTokenFromServer = (setToken) => {
     fetch(`${fetchRoute}/auth/token`)
@@ -97,5 +97,4 @@ export const sendChosenMoveToServer = (move, token, setGame) => {
         .then(res => res.json())
         .then(json => setGame(json))
         .catch(error => console.error(error))
-
 }

@@ -1,29 +1,22 @@
 import React, {useContext} from "react";
-import {Button, Text, TouchableOpacity, View, StyleSheet} from "react-native";
-import BodyText from "./text/BodyText";
+import {Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import * as Fetch from '../fetch/Fetch';
-import MainButton from "./MainButton";
+
 import {TokenContext} from "../context/TokenContext";
 import {GameContext} from "../context/GameContext";
-import TitleText from "./text/TitleText";
+
 
 const GameList = ({gameToJoin, onJoinClicked}) => {
     const token = useContext(TokenContext);
     const [game, setGame] = useContext(GameContext);
 
-
-    const joinGame = () => {
-        Fetch.joinGameOnServer(token, props.game.id, setGame)
-        navigation.navigate("MakeMove")
-    }
-
     return (
         <View>
             <TouchableOpacity onPress={() => onJoinClicked(token, gameToJoin.id, setGame)}>
                 <View style={styles.listContainer} >
-                    <View style={styles.text}>
-                        <Text>PLAY AGAINST:</Text>
-                        <Text>{!gameToJoin.name ? "Anonymous" : gameToJoin.name}</Text>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>PLAY AGAINST:</Text>
+                        <Text style={styles.text}>{!gameToJoin.name ? "Anonymous" : gameToJoin.name}</Text>
                     </View>
                     <Text style={styles.button}>JOIN</Text>
                 </View>
@@ -43,9 +36,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
     },
-    text: {
+    textContainer: {
         flexDirection: 'row',
-
+    },
+    text: {
+        marginRight: 5,
     },
     button: {
         marginRight: 10

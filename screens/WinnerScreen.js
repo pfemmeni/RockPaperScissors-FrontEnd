@@ -4,12 +4,10 @@ import {
   StyleSheet
 } from 'react-native';
 
-
 import MainButton from '../components/MainButton';
 import TitleText from '../components/text/TitleText';
 import Colors from '../constants/colors';
 import {FontAwesome} from "@expo/vector-icons";
-import {GameContext} from "../context/GameContext";
 
 const WinnerScreen = ({onGameOver}) => {
 

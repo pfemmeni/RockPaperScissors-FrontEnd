@@ -91,11 +91,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
-
-/*
-<TitleText>Hi {props.playerName}</TitleText>
- */
-{/*<View style={styles.line}></View>*/
-}
-{/*<MenuButtons style={styles.menuButtons}></MenuButtons>*/
-}

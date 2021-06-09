@@ -128,19 +128,3 @@ const styles = StyleSheet.create({
 });
 
 export default LandingScreen;
-
-
-/*
-      <MainButton
-              onPress={() => {
-                props.navigation.replace('Home');
-              }}
-            >
-              START PLAY
-            </MainButton>
-replace för att man inte skall komma tillbaka till den sidan igen, annars navigate
-
-//setPlayerName('Anonym')
-//navigation.navigate('Home');
- <MainButton onPress={onStartPlayAndGoToHomeScreenHandler} value={enteredNameValue}>
- <View style={styles.inputButtonContainer}>*/

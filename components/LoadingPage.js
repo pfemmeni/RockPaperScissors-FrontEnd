@@ -9,7 +9,7 @@ import BodyText from "./text/BodyText";
 
 const LoadingPage = () => {
     const [game, setGame] = useContext(GameContext);
-    let text = ""
+    let text = "";
     if(game.game==="ACTIVE"){
         text = "MAKE A MOVE"
     }
@@ -21,9 +21,9 @@ const LoadingPage = () => {
         <View style={styles.screen}>
             <TitleText>HI THERE {game.name}</TitleText>
             <TitleText>WAITING FOR AN OPPONENT TO</TitleText>
-            <Text>{text}</Text>
+            <Text style={styles.text}>{text}</Text>
             <View style={styles.spinContainer}>
-                <ActivityIndicator size={150} color="#4a148c"/>
+                <ActivityIndicator size={100} color="#4a148c"/>
             </View>
             <BodyText>Meanwhile you may look at this:</BodyText>
             <Image source={require('../assets/funny2.jpg')} style={styles.image}/>
@@ -35,14 +35,16 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         backgroundColor: Colors.background,
-        paddingVertical: 10,
+        marginTop: 60,
         alignItems: 'center',
         justifyContent: 'center',
     },
     spinContainer: {
+        backgroundColor: Colors.background,
         marginHorizontal: 20,
     },
     imageContainer: {
+        backgroundColor: Colors.background,
         width: Dimensions.get('window').width * 0.7,
         height: Dimensions.get('window').width * 0.7,
         overflow: 'hidden',
@@ -54,6 +56,10 @@ const styles = StyleSheet.create({
     image: {
         width: '85%',
         height: '45%',
+    },
+    text: {
+        fontFamily: 'open-sans',
+        fontSize: 22,
     }
 });
 

@@ -1,5 +1,5 @@
-import React, {useState, useContext} from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useContext} from 'react';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import BodyText from '../components/text/BodyText';
 import TitleText from '../components/text/TitleText';
 import Colors from '../constants/colors';
@@ -12,27 +12,26 @@ import LoadingPage from "../components/LoadingPage";
 import * as Fetch from "../fetch/Fetch";
 
 const MakeMoveScreen = ({navigation}) => {
-        const [madeMove, setMadeMove] = useState(false);
-        const [game, setGame] = useContext(GameContext);
-        const token = useContext(TokenContext);
+    const [game, setGame] = useContext(GameContext);
+    const token = useContext(TokenContext);
 
+    const movePressedHandler = (move) => {
+        Fetch.sendChosenMoveToServer(move, token, setGame)
+        navigation.navigate("Result");
+    };
 
-        const movePressedHandler = (move) => {
-            Fetch.sendChosenMoveToServer(move, token,setGame)
-            navigation.navigate("Result");
-        };
-
-        if (!game) {
-            return null;
-        }
-        return (
+    if (!game) {
+        return null;
+    }
+    return (
+        <ScrollView>
             <View style={styles.screen}>
-                {game.game === "OPEN" && <LoadingPage />}
+                {game.game === "OPEN" && <LoadingPage/>}
                 {game.game === "ACTIVE" &&
-                <View style={styles.screen}>
+                <View >
                     <View style={styles.textContainer}>
                         <TitleText>YOUR OPPONENT</TitleText>
-                        <TitleText >{game.opponentName}</TitleText>
+                        <TitleText>{game.opponentName}</TitleText>
                         <TitleText>ENTERED THE GAME</TitleText>
                     </View>
                     <View style={styles.makeMoveText}>
@@ -49,22 +48,23 @@ const MakeMoveScreen = ({navigation}) => {
                 </View>
                 }
             </View>
-        )
-
-    }
+        </ScrollView>
+    )
+}
 
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
         backgroundColor: Colors.background,
-        justifyContent: 'flex-start',
+        alignItems: 'center',
+
     },
     textContainer: {
+        backgroundColor: Colors.background,
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: 10,
-        marginTop: 100, //hårdkodat sålänge
     },
     makeMoveText: {
         alignItems: 'center',
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     },
     moveText: {fontSize: 19},
     iconContainer: {
+        backgroundColor: Colors.background,
         flexDirection: 'row',
         justifyContent: 'center',
         padding: 20,
