@@ -41,9 +41,11 @@ const styles = StyleSheet.create({
     },
     text: {
         marginRight: 5,
+        fontFamily: 'open-sans',
     },
     button: {
-        marginRight: 10
+        marginRight: 10,
+        fontFamily: 'open-sans',
     },
 });
 export default GameList;
