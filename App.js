@@ -64,12 +64,6 @@ export default function App() {
         }, 10000)
     }, [])
 
-    useEffect(() => {
-        setInterval(() => {
-            Fetch.getGamesHistoryFromServer(token, setPlayedGamesHistory);
-        }, 10000)
-    }, []);
-    console.log("PLAYEESSSS DDAAAAA", playedGamesHistory)
 
     if (!dataLoaded) {
         return (

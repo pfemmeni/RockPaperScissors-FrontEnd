@@ -26,8 +26,7 @@ const GameListScreen = ({navigation}) => {
     return (
         <View style={styles.screen}>
             <View>
-                {!gameList &&  <Text>No games to join yet...  </Text>}
-                {gameList && renderGameList()}
+                {gameList ? renderGameList() : <Text>No games to join yet...  </Text> }
             </View>
         </View>
     );

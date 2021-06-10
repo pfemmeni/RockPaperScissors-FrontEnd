@@ -1,30 +1,56 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import {GameHistoryContext} from "../context/GameHistoryContext";
+import * as Fetch from "../fetch/Fetch";
+import {TokenContext} from "../context/TokenContext";
+import GameHistoryList from "../components/GameHistoryList";
 
 const GameHistoryScreen = () => {
     const [playedGamesHistory, setPlayedGamesHistory] = useContext(GameHistoryContext);
+    const token = useContext(TokenContext)
 
+    useEffect(() => {
+        Fetch.getGamesHistoryFromServer(token, setPlayedGamesHistory
+        );
+    }, []);
 
     const renderGameHistoryList = () => {
         return playedGamesHistory.map((game) => {
             return (
-                <View styles={styles.listContainer} key={game.id}>
-                    <Text>YOU PLAYED AGAINST: {game.opponentName}</Text>
-                    <Text>RESULT: {game.game}</Text>
-                </View>
+                <GameHistoryList key={game.id}
+                          game={game}
+                />
             )
-        });
+        })
     }
     return (
         <View style={styles.screen}>
-            <View styles={styles.listContainer}>
-                {playedGamesHistory.length>0 && renderGameHistoryList()}
+            <View>
+                {playedGamesHistory ? renderGameHistoryList() : <Text>No played games yet...  </Text>}
             </View>
         </View>
     );
 };
 
+/*   const renderGameHistoryList = () => {
+       return playedGamesHistory.map((game) => {
+           return (
+               <View styles={styles.listContainer} key={game.id}>
+                   <Text>YOU PLAYED AGAINST: {game.opponentName}</Text>
+                   <Text>RESULT: {game.game}</Text>
+               </View>
+           )
+       });
+   }
+   return (
+       <View style={styles.screen}>
+           <View styles={styles.listContainer}>
+               {playedGamesHistory.length>0 && renderGameHistoryList()}
+           </View>
+       </View>
+   );
+};
+*/
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
