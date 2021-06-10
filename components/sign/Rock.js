@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import BodyText from '../text/BodyText';
-import TitleText from '../text/TitleText';
 import { FontAwesome } from '@expo/vector-icons';
 
 const Rock = props => {

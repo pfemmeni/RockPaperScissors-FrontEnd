@@ -16,10 +16,7 @@ const HomeScreen = ({navigation}) => {
 
 
     const startNewGameAndNavigateHandler = () => {
-
         Fetch.startGame(token, setGame)
-        console.log('game start------------------------', game);
-        // .then(response => navigation.navigate('Loading'));{navigation}
         navigation.navigate("MakeMove");
     };
 
@@ -33,25 +30,20 @@ const HomeScreen = ({navigation}) => {
                     In the Game you will choose one of the following symbols:
                 </BodyText>
                 <BodyText>ROCK - SCISSORS - PAPER</BodyText>
-                <BodyText/>
                 <BodyText style={styles.bodyText}>The Winner will be:</BodyText>
                 <BodyText> ROCK wins over SCISSORS</BodyText>
                 <BodyText style={styles.bodyText}>SCISSORS wins over PAPER</BodyText>
                 <BodyText style={styles.bodyText}> PAPER wins over ROCK</BodyText>
                 <BodyText>In case of the same symbol it's a Draw</BodyText>
-                <BodyText/>
                 <BodyText style={styles.bodyText}>GOOD LUCK!</BodyText>
             </View>
             <MainButton style={styles.buttons} onPress={startNewGameAndNavigateHandler}>
                 START NEW GAME
             </MainButton>
             <Text style={styles.buttons}>OR</Text>
-            <MainButton
-                onPress={() => {
-                    navigation.navigate('Games')
-                }}
-                style={styles.buttons}
-            >
+            <MainButton onPress={() => {
+                navigation.navigate('Games')}}
+                style={styles.buttons}>
                 JOIN OPEN GAME
             </MainButton>
         </View>

@@ -1,4 +1,4 @@
-const fetchRoute  = "http://18.117.223.101:8080"
+const fetchRoute = "http://18.117.223.101:8080"
 
 export const getNewTokenFromServer = (setToken) => {
     fetch(`${fetchRoute}/auth/token`)
@@ -35,7 +35,6 @@ export const startGame = (token, setGame) => {
         .catch(error => console.error(error))
 }
 
-
 export const getGameStatusFromServer = (token, setGame, onError) => {
     fetch(`${fetchRoute}/games/status`,
         {
@@ -70,7 +69,8 @@ export const getJoinableGamesFromServer = (token, setGameList) => {
         .catch(error => console.error(error))
 
 }
-export const joinGameOnServer = (token, gameId, setGame) =>{
+
+export const joinGameOnServer = (token, gameId, setGame) => {
 
     fetch(`${fetchRoute}/games/join/${gameId}`, {
         method: "GET",
@@ -97,4 +97,19 @@ export const sendChosenMoveToServer = (move, token, setGame) => {
         .then(res => res.json())
         .then(json => setGame(json))
         .catch(error => console.error(error))
+}
+
+export const getGamesHistoryFromServer = (token, setPlayedGamesHistory) => {
+    fetch(`${fetchRoute}/games/history`,
+        {
+            method: "GET",
+            headers: {
+                Accept: "*/*",
+                "token": token
+            }
+        })
+        .then(res => res.json())
+        .then(json => setPlayedGamesHistory(json))
+        .catch(error => console.error(error))
+
 }

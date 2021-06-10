@@ -1,12 +1,8 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, Text, FlatList} from 'react-native';
-
-import * as Fetch from "../fetch/Fetch";
-import GameList from "../components/GameList";
-import {GameListContext} from "../context/GameListContext";
+import {View, StyleSheet, Text} from 'react-native';
 import {GameHistoryContext} from "../context/GameHistoryContext";
 
-const GameHistoryScreen = ({navigation}) => {
+const GameHistoryScreen = () => {
     const [playedGamesHistory, setPlayedGamesHistory] = useContext(GameHistoryContext);
 
 
@@ -23,7 +19,7 @@ const GameHistoryScreen = ({navigation}) => {
     return (
         <View style={styles.screen}>
             <View styles={styles.listContainer}>
-                {playedGamesHistory && renderGameHistoryList()}
+                {playedGamesHistory.length>0 && renderGameHistoryList()}
             </View>
         </View>
     );

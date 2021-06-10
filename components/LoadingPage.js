@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import {View, StyleSheet, ActivityIndicator, Text, Image, Dimensions} from 'react-native';
-
 import TitleText from './text/TitleText';
 import Colors from '../constants/colors';
 import {GameContext} from "../context/GameContext";
@@ -10,6 +9,7 @@ import BodyText from "./text/BodyText";
 const LoadingPage = () => {
     const [game, setGame] = useContext(GameContext);
     let text = "";
+
     if(game.game==="ACTIVE"){
         text = "MAKE A MOVE"
     }

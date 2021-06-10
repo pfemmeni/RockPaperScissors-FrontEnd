@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View,} from 'react-native';
 import {GameContext} from "../context/GameContext";
 import LoadingPage from "../components/LoadingPage";
@@ -7,19 +7,13 @@ import WinnerScreen from "./WinnerScreen";
 import DrawScreen from "./DrawScreen";
 import LoseScreen from "./LoseScreen";
 import {GameOverContext} from "../context/GameOverContext";
-import {GameHistoryContext} from "../context/GameHistoryContext";
 
 const ResultScreen = ({navigation}) => {
     const [game, setGame] = useContext(GameContext);
-    const [playedGamesHistory, setPlayedGamesHistory] = useContext(GameHistoryContext);
     const [gameOver, setGameOver] = useContext(GameOverContext);
 
     const gameOverAndNavigateToHome = () => {
-        //setPlayedGamesHistory({...,game})
-        playedGamesHistory.push(game)
         setGameOver(true);
-        console.log("played games", playedGamesHistory)
-
         navigation.navigate('Home');
     }
 

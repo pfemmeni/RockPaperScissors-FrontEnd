@@ -18,7 +18,6 @@ const DrawScreen = ({onGameOver}) => {
           style={styles.icon}
       />
       <View style={styles.buttonContainer}>
-
         <MainButton
           onPress={() => onGameOver()}
           style={styles.button}

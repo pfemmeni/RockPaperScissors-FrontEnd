@@ -34,7 +34,6 @@ const LandingScreen = ({navigation}) => {
         navigation.navigate("Home");
     }
 
-
     return (
         <ScrollView>
             <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
@@ -55,7 +54,6 @@ const LandingScreen = ({navigation}) => {
                                 This is the worst game ever with the ugliest design made by
                                 Agnes and Caroline.
                             </BodyText>
-                            <BodyText></BodyText>
                             <BodyText style={styles.bodyText}>
                                 This is a game, and this game may be fun, it's up to you to
                                 find that out. When you press "start play" you will find the
@@ -116,6 +114,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-end',
         width: '100%',
+        marginBottom:10,
     },
     textInput: {
         width: '70%',
