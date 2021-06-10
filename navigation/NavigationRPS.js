@@ -5,7 +5,6 @@ import {FontAwesome} from "@expo/vector-icons";
 import LandingScreen from '../screens/LandingScreen';
 import HomeScreen from '../screens/HomeScreen';
 import MakeMoveScreen from '../screens/MakeMoveScreen';
-import LoadingPage from '../components/LoadingPage';
 import WinnerScreen from '../screens/WinnerScreen';
 import LoseScreen from '../screens/LoseScreen';
 import DrawScreen from '../screens/DrawScreen';
@@ -31,21 +30,6 @@ function NavigationRPS() {
 
     );
 }
-
-const Stack2 = createStackNavigator();
-
-function MakeMoveLooseWinDraw() {
-    return (
-        <Stack2.Navigator>
-            <Stack2.Screen name="MoveOrLoad" component={MoveOrLoadingScreen}/>
-            <Stack2.Screen name="Loading" component={LoadingPage}/>
-            <Stack2.Screen name="MakeMove" component={MakeMoveScreen}/>
-            <Stack2.Screen name="Win" component={WinnerScreen}/>
-            <Stack2.Screen name="Lose" component={LoseScreen}/>
-            <Stack2.Screen name="Draw" component={DrawScreen}/>
-        </Stack2.Navigator>);
-}
-
 
 const Tab = createBottomTabNavigator();
 
@@ -87,6 +71,23 @@ export default NavigationTabRPS;
   /!* <NavigationContainer >*!/
  */
 /*
+
+
+
+const Stack2 = createStackNavigator();
+
+function MakeMoveLooseWinDraw() {
+    return (
+        <Stack2.Navigator>
+            <Stack2.Screen name="MoveOrLoad" component={MoveOrLoadingScreen}/>
+            <Stack2.Screen name="Loading" component={LoadingPage}/>
+            <Stack2.Screen name="MakeMove" component={MakeMoveScreen}/>
+            <Stack2.Screen name="Win" component={WinnerScreen}/>
+            <Stack2.Screen name="Lose" component={LoseScreen}/>
+            <Stack2.Screen name="Draw" component={DrawScreen}/>
+        </Stack2.Navigator>);
+}
+
 const Stack2 = createStackNavigator();
 
 function MakeMoveLooseWinDraw() {
