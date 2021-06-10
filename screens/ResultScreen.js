@@ -7,18 +7,15 @@ import WinnerScreen from "./WinnerScreen";
 import DrawScreen from "./DrawScreen";
 import LoseScreen from "./LoseScreen";
 import {GameOverContext} from "../context/GameOverContext";
-import * as Fetch from "../fetch/Fetch";
-import {GameHistoryContext} from "../context/GameHistoryContext";
-import {TokenContext} from "../context/TokenContext";
+
+
 
 const ResultScreen = ({navigation}) => {
     const [game, setGame] = useContext(GameContext);
-    const token = useContext(TokenContext);
     const [gameOver, setGameOver] = useContext(GameOverContext);
-    const [playedGamesHistory, setPlayedGamesHistory] = useContext(GameHistoryContext);
+
 
     const gameOverAndNavigateToHome = () => {
-        // Fetch.getGamesHistoryFromServer(token, setPlayedGamesHistory);
         setGameOver(true);
         navigation.navigate('Home');
     }

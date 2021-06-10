@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import {} from 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import NavigationRPS from './navigation/NavigationRPS';
 import {TokenContext} from './context/TokenContext';
@@ -35,7 +34,6 @@ export default function App() {
 
     useEffect(() => {
         const timer = setInterval(() => {
-            console.log("useEffect setInterval---------------", token, game, gameOver)
             if (game) {
                 if (gameOver) {
                     setGame(null)

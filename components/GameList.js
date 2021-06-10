@@ -1,7 +1,5 @@
 import React, {useContext} from "react";
 import {Text, TouchableOpacity, View, StyleSheet} from "react-native";
-import * as Fetch from '../fetch/Fetch';
-
 import {TokenContext} from "../context/TokenContext";
 import {GameContext} from "../context/GameContext";
 
